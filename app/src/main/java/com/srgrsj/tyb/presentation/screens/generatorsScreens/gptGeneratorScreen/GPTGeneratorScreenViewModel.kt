@@ -54,18 +54,18 @@ class GPTGeneratorScreenViewModel @Inject constructor(
         data class Workout(
             var title: String? = "",
             var description: String? = "",
-            var duration: Long? = null,
+            var duration: Long,
             var exerciseList: List<Exercise> = listOf(),
         )
         
         data class Exercise(
             var title: String? = "",
             var description: String? = "",
-            var numberOfRepetitions: Int? = null,
-            var numberOfCircles: Int? = null,
-            var durationOfOneCircle: Long? = null,
-            var durationOfRest: Long? = null,
-            var exerciseType: ExerciseType? = null,
+            var numberOfRepetitions: Int,
+            var numberOfCircles: Int,
+            var durationOfOneCircle: Long,
+            var durationOfRest: Long,
+            var exerciseType: ExerciseType,
         )
 
         enum class ExerciseType {
@@ -157,7 +157,7 @@ class GPTGeneratorScreenViewModel @Inject constructor(
     }
 
     companion object {
-        const val CHAT_GPT_API_KEY = ""
+        const val CHAT_GPT_API_KEY = "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"
     }
 
 

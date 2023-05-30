@@ -49,6 +49,62 @@
     <string name="save_exercise">Save exercise</string>
     <string name="save">Save</string>
     <string name="dont_save">Don\'t save</string>
+    <string name="generate_gpt_query_template">
+        <![CDATA[
+        Generate a workout for these muscle groups:
+        %1$s
+        The total duration required for completing the workout would be:
+        %2$s
+        Additional workout requirements (optional):
+        %3$s
+
+        The response should only contain a JSON instance of the following data classes:
+
+        data class Workout(
+            var title: String? = "",
+            var description: String? = "",
+            var duration: Long,
+            var exerciseList: List<Exercise> = listOf(),
+        )
+
+        data class Exercise(
+            var title: String? = "",
+            var description: String? = "",
+            var numberOfRepetitions: Int,
+            var numberOfCircles: Int,
+            var durationOfOneCircle: Long,
+            var durationOfRest: Long,
+            var exerciseType: ExerciseType,
+        )
+
+        enum class ExerciseType {
+            TIME, REPETITION
+        }
+
+        Explanations for the fields in the classes:
+
+        Workout:
+            title - workout title
+            description - workout description
+            duration - approximate duration of the workout
+
+        Exercise:
+            title - exercise title
+            description - exercise description
+            numberOfRepetitions - number of repetitions per circle
+            numberOfCircles - number of circles
+            durationOfOneCircle - duration of one circle in milliseconds
+            durationOfRest - rest duration between circles
+
+        An instance of the Exercise class can be of two types:
+        TIME - Exercises to be performed for a specific duration
+        REPETITIONS - Exercises to be performed for a specific number of repetitions
+
+        In the description, provide detailed instructions for performing each exercise
+
+        Time should be specified in milliseconds, and the duration of one circle for an exercise should not be less than 30 seconds
+        ]]>
+    </string>
 
 
 </resources>

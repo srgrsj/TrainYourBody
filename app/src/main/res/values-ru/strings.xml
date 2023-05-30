@@ -50,4 +50,60 @@
     <string name="save_exercise">Сохранить упражнение</string>
     <string name="save">Сохранить</string>
     <string name="dont_save">Не сохранять</string>
+    <string name="generate_gpt_query_template">
+        <![CDATA[
+        Сгенерируй тренировку на эти группы мышц:
+        %1$s
+        На полное выполнение которой, потребовалось бы следующее время:
+        %2$s
+        Дополнительные требования к тренировке (могут отсутствовать):
+        %3$s
+
+        Ответ должен содержать только json экземпляр следующих data классов:
+
+        data class Workout(
+            var title: String? = "",
+            var description: String? = "",
+            var duration: Long,
+            var exerciseList: List<Exercise> = listOf(),
+        )
+
+        data class Exercise(
+            var title: String? = "",
+            var description: String? = "",
+            var numberOfRepetitions: Int,
+            var numberOfCircles: Int,
+            var durationOfOneCircle: Long,
+            var durationOfRest: Long,
+            var exerciseType: ExerciseType,
+        )
+
+        enum class ExerciseType {
+            TIME, REPETITION
+        }
+
+        Пояснения к полям классов:
+
+        Workout:
+            title - название тренировки
+            description - описание тренировки
+            duration - примерная продолжительность тренировки
+
+        Exercise:
+            title - название упражнения
+            description - описание упражнения
+            numberOfRepetitions - количество повторений за один круг
+            numberOfCircles - количество кругов
+            durationOfOneCircle - продолжительность одного круга, в миллисекундах
+            durationOfRest - продолжительность отдыха между кругами
+
+        экземпляр класса Exercise может быть двух типов:
+        TIME - Упражнения, которые нужно выполять на время
+        REPETITIONS - Упражнения, которые нужно выполнять на повторения
+
+        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения
+
+        Время нужно указывать в миллисекундах, а также время одного круга на упражнение не должно быть меньше 30 секунд
+        ]]>
+    </string>
 </resources>
