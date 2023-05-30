@@ -41,7 +41,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 
 
-val TopBarText = Color(0xFFFF5025)
+val TopBarText = Color(0xE6FFFFFF)
 
 val MainBackground = Color(0xFF1F1F1F)
 

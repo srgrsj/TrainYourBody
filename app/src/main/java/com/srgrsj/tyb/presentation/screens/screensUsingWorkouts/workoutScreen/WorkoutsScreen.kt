@@ -12,6 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,18 +46,17 @@ fun WorkoutsScreen(
 
     Scaffold(
         topBar = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            TopAppBar(
+                backgroundColor = TopBarColor,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
-                    .background(TopBarColor)
             ) {
-                Spacer(modifier = Modifier.width(10.dp))
                 Text(
                     text = stringResource(id = R.string.workouts_title),
                     style = AppTheme.typography.title,
-                    color = TopBarText
+                    color = TopBarText,
+                    modifier = Modifier
+                        .padding(start = 12.dp)
                 )
             }
         }

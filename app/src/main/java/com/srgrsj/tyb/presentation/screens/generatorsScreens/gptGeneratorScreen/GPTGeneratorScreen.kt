@@ -2,22 +2,8 @@ package com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -78,18 +64,17 @@ fun GPTGeneratorScreen(
 
     Scaffold(
         topBar = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            TopAppBar(
+                backgroundColor = TopBarColor,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
-                    .background(TopBarColor)
             ) {
-                Spacer(modifier = Modifier.width(10.dp))
                 Text(
                     text = stringResource(id = R.string.gpt_generator_title),
                     style = AppTheme.typography.title,
-                    color = TopBarText
+                    color = TopBarText,
+                    modifier = Modifier
+                        .padding(start = 12.dp)
                 )
             }
         }

@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.runtime.rememberCoroutineScope
@@ -46,18 +43,17 @@ fun AccountScreen(
 
     Scaffold(
         topBar = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            TopAppBar(
+                backgroundColor = TopBarColor,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
-                    .background(TopBarColor)
             ) {
-                Spacer(modifier = Modifier.width(10.dp))
                 Text(
                     text = stringResource(id = R.string.your_account_title),
                     style = AppTheme.typography.title,
-                    color = TopBarText
+                    color = TopBarText,
+                    modifier = Modifier
+                        .padding(start = 12.dp)
                 )
             }
         }

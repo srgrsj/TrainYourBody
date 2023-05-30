@@ -86,31 +86,35 @@ fun ExerciseRealization(
                             )
                         }
 
-                        if (viewModel.isInRest) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.Center
-                            ) {
-                                exercise.durationOfRest?.let {
-                                    CountDownTimer(
-                                        totalTime = it,
-                                        isRest = true
-                                    )
+                        if (viewModel.currentCircle <= exercise.numberOfCircles!!) {
+                            if (viewModel.isInRest) {
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center
+                                ) {
+                                    exercise.durationOfRest?.let {
+                                        CountDownTimer(
+                                            totalTime = it,
+                                            isRest = true
+                                        )
+                                    }
                                 }
-                            }
 
-                        } else {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.Center
-                            ) {
-                                exercise.durationOfOneCircle?.let {
-                                    CountDownTimer(
-                                        totalTime = it,
-                                        isRest = false
-                                    )
+                            } else {
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center
+                                ) {
+                                    exercise.durationOfOneCircle?.let {
+                                        CountDownTimer(
+                                            totalTime = it,
+                                            isRest = false
+                                        )
+                                    }
                                 }
                             }
+                        } else {
+                            viewModel.goToNextExercise()
                         }
                     }
                 }

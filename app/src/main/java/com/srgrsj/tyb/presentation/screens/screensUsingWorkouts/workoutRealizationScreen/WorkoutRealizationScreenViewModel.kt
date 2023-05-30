@@ -14,8 +14,7 @@ class WorkoutRealizationScreenViewModel @Inject constructor(
     useCase: WorkoutUseCase
 ) : ScreensUsingWorkoutViewModel(useCase) {
 
-    var isProgressStop by mutableStateOf(false)
-    var currentExercise: Exercise? by mutableStateOf(null)
+    var isProgressStop by mutableStateOf(true)
     var exerciseList: List<Exercise> by mutableStateOf(emptyList())
     var currentExerciseIndex by mutableStateOf(0)
     var currentCircle by mutableStateOf(1)
@@ -28,18 +27,20 @@ class WorkoutRealizationScreenViewModel @Inject constructor(
 
     fun goToNextExercise() {
         currentExerciseIndex++
+        isInRest = false
+        currentCircle = 1
+        currentRestCircle = 1
+    }
 
-        if (currentExerciseIndex < exerciseList.size) {
-            val nextExercise = exerciseList[currentExerciseIndex]
-            currentExercise = nextExercise
+    fun increaseCurrentCircle(){
+        currentCircle++
 
-            if (currentCircle < (nextExercise.numberOfCircles ?: 1)) {
-                currentCircle++
-                isInRest = true
-            } else {
-                currentCircle = 1
-                isInRest = false
-            }
-        }
+        isInRest = true
+    }
+
+    fun increaseCurrentRestCircle(){
+        currentRestCircle++
+
+        isInRest = false
     }
 }

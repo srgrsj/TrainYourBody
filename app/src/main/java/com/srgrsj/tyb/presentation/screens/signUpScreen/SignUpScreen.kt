@@ -54,18 +54,17 @@ fun SignUpScreen(
 
     Scaffold(
         topBar = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            TopAppBar(
+                backgroundColor = TopBarColor,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
-                    .background(TopBarColor)
             ) {
-                Spacer(modifier = Modifier.width(10.dp))
                 Text(
                     text = stringResource(id = R.string.signup_title),
                     style = AppTheme.typography.title,
-                    color = TopBarText
+                    color = TopBarText,
+                    modifier = Modifier
+                        .padding(start = 12.dp)
                 )
             }
         }

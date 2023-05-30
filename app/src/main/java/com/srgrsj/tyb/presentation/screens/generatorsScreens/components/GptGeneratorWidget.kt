@@ -46,7 +46,7 @@ fun GptGeneratorWidget(
             Column(
                 verticalArrangement = Arrangement.Top,
                 modifier = Modifier
-                    .height(120.dp)
+                    .height(125.dp)
             ) {
 
                 Spacer(modifier = Modifier.height(35.dp))

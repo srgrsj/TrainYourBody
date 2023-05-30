@@ -35,7 +35,7 @@ fun CountDownTimer(
     Box(contentAlignment = Alignment.Center) {
         CircularProgressIndicator(
             progress = progress,
-            modifier = Modifier.size(100.dp),
+            modifier = Modifier.size(150.dp),
             color = if (isRest) Color.Blue else Green
         )
         Text(
@@ -44,18 +44,17 @@ fun CountDownTimer(
         )
     }
 
-    LaunchedEffect(Unit) {
-        while (timeLeft > 0) {
+    LaunchedEffect(key1 = viewModel.isProgressStop) {
+        while (timeLeft > 0 && !viewModel.isProgressStop) {
             delay(100L)
             timeLeft -= 100L
             progress = timeLeft.toFloat() / totalTime.toFloat()
         }
-        if (!isRest) {
-            viewModel.currentCircle++
-            viewModel.isInRest == true
-        } else {
-            viewModel.currentRestCircle++
-            viewModel.isInRest == false
+
+        if (!isRest && progress == 0f) {
+            viewModel.increaseCurrentCircle()
+        } else if (isRest && progress == 0f) {
+            viewModel.increaseCurrentRestCircle()
         }
     }
 }
