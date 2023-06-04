@@ -1,4 +1,4 @@
-package com.srgrsj.tyb.data.firebase.auth
+package com.srgrsj.tyb.data.user
 
 import com.srgrsj.tyb.R
 import com.google.firebase.auth.ktx.auth

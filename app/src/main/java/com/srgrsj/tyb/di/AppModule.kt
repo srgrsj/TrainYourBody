@@ -1,8 +1,11 @@
 package com.srgrsj.tyb.di
 
-import com.srgrsj.tyb.domain.auth.repository.AuthRepository
-import com.srgrsj.tyb.data.firebase.auth.repository.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.srgrsj.tyb.data.user.repository.UserRepositoryFirebaseImpl
+import com.srgrsj.tyb.domain.user.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +21,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesRepositoryImpl(firebaseAuth: FirebaseAuth): AuthRepository {
-        return AuthRepositoryImpl(firebaseAuth)
+    fun providesRepositoryImpl(firebaseAuth: FirebaseAuth, databaseReference: DatabaseReference): UserRepository {
+        return UserRepositoryFirebaseImpl(firebaseAuth, databaseReference)
     }
 }

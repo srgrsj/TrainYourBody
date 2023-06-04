@@ -15,5 +15,4 @@ class DataModule {
     @Provides
     fun provideDatabase() = Firebase.database.reference
 
-
 }

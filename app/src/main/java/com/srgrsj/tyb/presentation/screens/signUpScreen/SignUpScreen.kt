@@ -194,7 +194,6 @@ fun SignUpScreen(
                             keyboardController?.hide()
                             scope.launch {
                                 viewModel.registerUser(
-                                    name = userName,
                                     email = userEmail,
                                     password = userPassword
                                 )

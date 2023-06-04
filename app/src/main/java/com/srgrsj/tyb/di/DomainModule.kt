@@ -1,13 +1,16 @@
 package com.srgrsj.tyb.di
 
 import com.srgrsj.tyb.data.exercise.repository.ExerciseRepositoryFirebaseImpl
-import com.srgrsj.tyb.data.firebase.auth.user.repository.UserRepositoryFirebaseImpl
+import com.srgrsj.tyb.data.user.repository.UserRepositoryFirebaseImpl
 import com.srgrsj.tyb.data.workout.repository.WorkoutRepositoryFirebaseImpl
 import com.srgrsj.tyb.domain.exercise.usecase.AddExerciseUseCase
 import com.srgrsj.tyb.domain.exercise.usecase.DeleteExerciseUseCase
 import com.srgrsj.tyb.domain.exercise.usecase.ExerciseUseCase
 import com.srgrsj.tyb.domain.exercise.usecase.GetExercisesUseCase
 import com.srgrsj.tyb.domain.user.usecases.AddUserUseCase
+import com.srgrsj.tyb.domain.user.usecases.UserSignInUseCase
+import com.srgrsj.tyb.domain.user.usecases.UserSignOutUseCase
+import com.srgrsj.tyb.domain.user.usecases.UserSignUpUseCase
 import com.srgrsj.tyb.domain.user.usecases.UserUseCase
 import com.srgrsj.tyb.domain.workout.usecases.AddWorkoutUseCase
 import com.srgrsj.tyb.domain.workout.usecases.ChangeWorkoutFavState
@@ -42,6 +45,9 @@ class DomainModule {
     @Provides
     fun providesUserUseCases(userRepositoryFirebaseImpl: UserRepositoryFirebaseImpl): UserUseCase =
         UserUseCase(
-            addUserUseCase = AddUserUseCase(userRepositoryFirebaseImpl)
+            addUserUseCase = AddUserUseCase(userRepositoryFirebaseImpl),
+            userSignInUseCase = UserSignInUseCase(userRepositoryFirebaseImpl),
+            userSignOutUseCase = UserSignOutUseCase(userRepositoryFirebaseImpl),
+            userSignUpUseCase = UserSignUpUseCase(userRepositoryFirebaseImpl)
         )
 }

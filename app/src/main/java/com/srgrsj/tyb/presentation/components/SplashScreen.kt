@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.srgrsj.tyb.R
-import com.srgrsj.tyb.data.firebase.auth.AccountData
+import com.srgrsj.tyb.data.user.AccountData
 import com.srgrsj.tyb.presentation.navigation.NavConstants
 import kotlinx.coroutines.delay
 

@@ -3,7 +3,7 @@ package com.srgrsj.tyb.data.exercise.repository
 import com.srgrsj.tyb.domain.exercise.model.Exercise
 import com.srgrsj.tyb.domain.exercise.repository.ExerciseRepository
 import com.srgrsj.tyb.domain.extensions.await
-import com.srgrsj.tyb.data.firebase.auth.AccountData
+import com.srgrsj.tyb.data.user.AccountData
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.GenericTypeIndicator
 import dagger.Module
