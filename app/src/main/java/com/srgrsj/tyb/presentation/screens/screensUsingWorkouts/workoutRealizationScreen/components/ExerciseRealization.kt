@@ -32,10 +32,13 @@ import com.srgrsj.tyb.R
 import com.srgrsj.tyb.domain.exercise.model.Exercise
 import com.srgrsj.tyb.domain.exercise.model.ExerciseType
 import com.srgrsj.tyb.presentation.components.AnimatedTextBlock
-import com.srgrsj.tyb.presentation.components.VideoDisplayer
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen.WorkoutRealizationScreenViewModel
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.Red
+import io.sanghun.compose.video.RepeatMode
+import io.sanghun.compose.video.VideoPlayer
+import io.sanghun.compose.video.controller.VideoPlayerControllerConfig
+import io.sanghun.compose.video.uri.VideoPlayerMediaItem
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
@@ -101,7 +104,9 @@ fun ExerciseRealization(
                                 style = AppTheme.typography.text16sp
                             )
                             Text(
-                                text = if (viewModel.isInRest) stringResource(id = R.string.rest) else stringResource(id = R.string.work),
+                                text = if (viewModel.isInRest) stringResource(id = R.string.rest) else stringResource(
+                                    id = R.string.work
+                                ),
                                 style = AppTheme.typography.text16sp
                             )
                         }
@@ -180,7 +185,7 @@ fun ExerciseRealization(
             Spacer(modifier = Modifier.height(40.dp))
         }
 
-        if (exercise.demonstration != null) {
+        exercise.demonstration?.let {
             Spacer(modifier = Modifier.height(25.dp))
 
             Row(
@@ -188,7 +193,37 @@ fun ExerciseRealization(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                VideoDisplayer(videoUrl = exercise.demonstration!!)
+                VideoPlayer(
+                    mediaItems = listOf(
+                        VideoPlayerMediaItem.NetworkMediaItem(
+                            url = it
+                        )
+                    ),
+                    handleLifecycle = true,
+                    autoPlay = true,
+                    usePlayerController = true,
+                    enablePip = false,
+                    handleAudioFocus = true,
+                    controllerConfig = VideoPlayerControllerConfig(
+                        showSpeedAndPitchOverlay = false,
+                        showSubtitleButton = false,
+                        showCurrentTimeAndTotalTime = true,
+                        showBufferingProgress = true,
+                        showForwardIncrementButton = true,
+                        showBackwardIncrementButton = true,
+                        showBackTrackButton = false,
+                        showNextTrackButton = false,
+                        showRepeatModeButton = false,
+                        controllerShowTimeMilliSeconds = 5_000,
+                        controllerAutoShow = true,
+                        showFullScreenButton = false
+                    ),
+                    volume = 0.5f,
+                    repeatMode = RepeatMode.ONE,
+                    modifier = Modifier
+                        .height(215.dp)
+                        .fillMaxWidth()
+                )
             }
         }
 

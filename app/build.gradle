@@ -54,11 +54,10 @@ android {
 }
 
 dependencies {
-    //Exo Player
-    implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
-
-    // VideoView
-//    implementation 'androidx.compose.ui:ui-interop:1.0.0'
+    //Videos
+    implementation 'io.sanghun:compose-video:1.1.1'
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.7'
+    implementation 'com.google.android.exoplayer:extension-mediasession:2.18.7'
 
     // Ktor
     implementation "io.ktor:ktor-client-android:2.2.4"

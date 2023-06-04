@@ -31,7 +31,7 @@ enum class ReadyWorkouts(val workout: Workout) {
                 description = context.getString(R.string.beginners_workout_description),
                 duration = 30 * 1000 * 60,
                 exerciseList = listOf(
-                    ReadyExercises.PULL_UPS.getLocalizedExercise(context).copy(
+                    ReadyExercises.PUSH_UPS.getLocalizedExercise(context).copy(
                         numberOfRepetitions = 12,
                         numberOfCircles = 2,
                         exerciseType = ExerciseType.REPETITION
