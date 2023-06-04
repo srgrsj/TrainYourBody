@@ -32,13 +32,13 @@ class WorkoutRealizationScreenViewModel @Inject constructor(
         currentRestCircle = 1
     }
 
-    fun increaseCurrentCircle(){
+    fun increaseCurrentCircle() {
         currentCircle++
 
         isInRest = true
     }
 
-    fun increaseCurrentRestCircle(){
+    fun increaseCurrentRestCircle() {
         currentRestCircle++
 
         isInRest = false

@@ -23,6 +23,7 @@ data class Exercise(
     var durationOfOneCircle: Long? = null,
     var durationOfRest: Long? = null,
     var exerciseType: ExerciseType? = null,
+    var demonstration: String? = null,
     val id: String = UUID.randomUUID().toString()
 ) : Parcelable
 

@@ -35,6 +35,13 @@ data class AppTypography(
         color = Color.Black,
 //        color = Color.White
     ),
+    val text20sp: TextStyle = TextStyle(
+        fontFamily = ubuntu,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp,
+        color = Color.Black,
+//        color = Color.White
+    ),
     val text16sp: TextStyle = TextStyle(
         fontFamily = ubuntu,
         fontWeight = FontWeight.Normal,

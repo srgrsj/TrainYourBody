@@ -1,4 +1,4 @@
-package com.srgrsj.tyb.presentation.screens.components
+package com.srgrsj.tyb.presentation.components
 
 import android.view.MotionEvent
 import androidx.compose.animation.core.animateFloatAsState

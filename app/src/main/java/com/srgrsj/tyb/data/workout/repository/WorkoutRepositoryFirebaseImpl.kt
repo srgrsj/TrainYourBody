@@ -1,6 +1,6 @@
 package com.srgrsj.tyb.data.workout.repository
 
-import com.srgrsj.tyb.domain.extenisons.await
+import com.srgrsj.tyb.domain.extensions.await
 import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.domain.workout.repository.WorkoutRepository
 import com.srgrsj.tyb.data.firebase.auth.AccountData

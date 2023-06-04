@@ -58,7 +58,7 @@ fun WorkoutPreviewScreen(
             ) {
                 Text(
                     text = workout?.title.toString(),
-                    style = AppTheme.typography.title,
+                    style = AppTheme.typography.subtitle,
                     color = TopBarText,
                     modifier = Modifier
                         .padding(start = 12.dp)

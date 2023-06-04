@@ -25,7 +25,7 @@ import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.data.firebase.auth.AccountData.ACCOUNT_AVATAR
 import com.srgrsj.tyb.data.firebase.auth.AccountData.EMAIL
 import com.srgrsj.tyb.presentation.screens.components.Avatar
-import com.srgrsj.tyb.presentation.screens.components.VideoDisplayer
+import com.srgrsj.tyb.presentation.components.VideoDisplayer
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.Red
 import com.srgrsj.tyb.presentation.theme.TopBarColor

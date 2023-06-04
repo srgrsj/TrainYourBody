@@ -1,5 +1,6 @@
 package com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -11,10 +12,14 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -35,9 +40,12 @@ import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizati
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
+import com.srgrsj.tyb.presentation.theme.TopBarColor
+import com.srgrsj.tyb.presentation.theme.TopBarText
 import kotlinx.coroutines.delay
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun WorkoutRealizationScreen(
     navigationController: NavController,
@@ -49,76 +57,80 @@ fun WorkoutRealizationScreen(
     val exerciseList = displayingWorkout.value?.exerciseList
     val currentExercise = exerciseList?.getOrNull(viewModel.currentExerciseIndex)
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MainBackground)
-    ) {
-        Column() {
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            Row(
-                horizontalArrangement = Arrangement.Center,
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = TopBarColor,
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
                 Text(
                     text = displayingWorkout.value?.title ?: "no data",
-                    style = AppTheme.typography.title,
-                    color = Color.White
+                    style = AppTheme.typography.subtitle,
+                    color = TopBarText,
+                    modifier = Modifier
+                        .padding(start = 12.dp)
                 )
             }
+        }
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MainBackground)
+        ) {
+            Column() {
 
-            Spacer(modifier = Modifier.height(35.dp))
+                Spacer(modifier = Modifier.height(5.dp))
 
-            if (exerciseList != null) {
-                if (viewModel.currentExerciseIndex < exerciseList.size) {
-                    currentExercise?.let {
-                        ExerciseRealization(
-                            exercise = it,
-                            viewModel = viewModel
-                        )
-                    }
-                } else {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(20))
-                                .fillMaxWidth(0.95f)
-                                .fillMaxHeight(0.4f)
-                                .background(Red)
-                                .border(3.dp, Color.Black, RoundedCornerShape(20))
-
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.workout_is_over),
-                                style = AppTheme.typography.subtitle,
-                                color = Color.Black
+                if (exerciseList != null) {
+                    if (viewModel.currentExerciseIndex < exerciseList.size) {
+                        currentExercise?.let {
+                            ExerciseRealization(
+                                exercise = it,
+                                viewModel = viewModel
                             )
                         }
-
-                        Spacer(modifier = Modifier.height(25.dp))
-
-                        Button(
-                            onClick = {
-                                navigationController.navigate(NavConstants.WORKOUTS)
-                            },
-                            colors = ButtonDefaults.buttonColors(Red),
+                    } else {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
-                                .height(50.dp)
-                                .clip(RoundedCornerShape(20))
+                                .fillMaxWidth()
                         ) {
-                            Text(
-                                text = stringResource(id = R.string.back_to_workouts_screen),
-                                style = AppTheme.typography.text16sp
-                            )
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(20))
+                                    .fillMaxWidth(0.95f)
+                                    .fillMaxHeight(0.4f)
+                                    .background(Red)
+                                    .border(3.dp, Color.Black, RoundedCornerShape(20))
+
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.workout_is_over),
+                                    style = AppTheme.typography.subtitle,
+                                    color = Color.Black
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(25.dp))
+
+                            Button(
+                                onClick = {
+                                    navigationController.navigate(NavConstants.WORKOUTS)
+                                },
+                                colors = ButtonDefaults.buttonColors(Red),
+                                modifier = Modifier
+                                    .height(50.dp)
+                                    .clip(RoundedCornerShape(20))
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.back_to_workouts_screen),
+                                    style = AppTheme.typography.text16sp
+                                )
+                            }
                         }
                     }
                 }

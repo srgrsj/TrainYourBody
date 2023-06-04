@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -35,6 +36,8 @@ fun GPTGeneratorScreen(
 
     ) {
 
+    val context = LocalContext.current
+
     var muscleGroupsTextField by remember {
         mutableStateOf("")
     }
@@ -53,6 +56,7 @@ fun GPTGeneratorScreen(
     var isInProgress by remember {
         mutableStateOf(false)
     }
+
 
     if (isWorkoutGenerate) {
         if (generatedWorkout != null && navigateToWorkoutPreviewScreen != null) {
@@ -155,6 +159,7 @@ fun GPTGeneratorScreen(
                             .height(50.dp),
                         onClick = {
                             viewModel.generateGptQuery(
+                                context,
                                 muscleGroupsTextField,
                                 desiredDurationOfTrainingTextField,
                                 additionalWorkoutRequirementsTextField

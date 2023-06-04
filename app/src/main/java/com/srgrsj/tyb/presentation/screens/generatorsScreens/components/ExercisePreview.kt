@@ -68,8 +68,7 @@ fun ExercisePreview(
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = it,
-                        style = AppTheme.typography.text16sp,
-                        color = AlphaWhiteColor
+                        style = AppTheme.typography.text16sp
                     )
                 }
 

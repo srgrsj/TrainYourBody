@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -81,6 +82,12 @@ fun SignUpScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+                Image(
+                    modifier = Modifier.
+                    padding(bottom = 50.dp),
+                    painter = painterResource(id = R.drawable.train_your_body),
+                    contentDescription = null
+                )
 
                 TextField(
                     value = userEmail,

@@ -1,6 +1,5 @@
 package com.srgrsj.tyb.presentation.theme
 
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -53,12 +52,11 @@ val GeneratorWidgetColor = Color(0xFFFF5025)
 val GeneratorButtonBackground = Color(0xff757575)
 
 val GptGeneratorWidgetColor = Color(0xFF4C34D5)
-val GptGeneratedWorkoutCardsBackground= Color(0xFF4C34D5)
+val GptGeneratedWorkoutCardsColor= Color(0xFF4C34D5)
 val GptGeneratorButtonBackground = Color(0xFF03A9F4)
 
-val AvatarBorderColor = Color(0xfff96f4d)
+val AuthorWorkoutsCardColor = Color(0xFF8BC34A)
 
-val AlphaWhiteColor = Color(0xB2FFFFFF)
 
 //NavBarColors
 val NavBarColor = Color(0xFF1F1F1F)
@@ -72,7 +70,7 @@ val Green = Color(0xFF098F04)
 val LightRed = Color(0xFFFF0000)
 val DarkGray = Color(0xFF5E5E5E)
 val LightGray = Color(0xFF8F8F8F)
-
+val AlphaWhiteColor = Color(0xB2FFFFFF)
 
 
 

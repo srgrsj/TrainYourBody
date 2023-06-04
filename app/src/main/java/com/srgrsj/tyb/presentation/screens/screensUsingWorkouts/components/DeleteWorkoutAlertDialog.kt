@@ -27,95 +27,8 @@ import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.Green
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
-
-//@Composable
-//fun DeleteWorkoutAlertDialog(
-//    workout: Workout,
-//    viewModel: ScreensUsingWorkoutViewModel
-//) {
-//    AlertDialog(
-//        onDismissRequest = {
-//            viewModel.hideDeleteWorkoutAlertDialog()
-//        },
-//        backgroundColor = MainBackground,
-//        text = {
-//            Column(
-//                modifier = Modifier,
-//                verticalArrangement = Arrangement.spacedBy(2.dp),
-//                horizontalAlignment = Alignment.CenterHorizontally
-//            ) {
-//                Text(
-//                    text = "Удалить тренировку?",
-//                    style = AppTheme.typography.title,
-//                    color = Color.White
-//                )
-//
-//                Spacer(modifier = Modifier.padding(vertical = 2.dp))
-//            }
-//        },
-//        confirmButton = {
-//            Button(
-//                modifier = Modifier.padding(4.dp),
-//                onClick = {
-//                    viewModel.deleteWorkoutFromRealtimeDatabase(workout)
-//                    viewModel.deleteWorkoutFromWorkoutList(workout)
-//                    viewModel.hideDeleteWorkoutAlertDialog()
-//
-//                },
-//                colors = ButtonDefaults.buttonColors(
-//                    backgroundColor = MainBackground
-//                )
-//            ) {
-//                Text(
-//                    modifier = Modifier
-//                        .align(Alignment.Bottom)
-//                        .padding(top = 4.dp),
-//                    text = "Yes",
-//                    style = AppTheme.typography.text16sp,
-//                    color = AlphaWhiteColor
-//                )
-//                Icon(
-//                    Icons.Outlined.Check,
-//                    contentDescription = null,
-//                    tint = Green
-//                )
-//            }
-//        },
-//
-//        dismissButton = {
-//            Button(
-//                modifier = Modifier.padding(4.dp),
-//                onClick = {
-//                    viewModel.hideDeleteWorkoutAlertDialog()
-//                },
-//                colors = ButtonDefaults.buttonColors(
-//                    backgroundColor = MainBackground
-//                )
-//            ) {
-//                Text(
-//                    modifier = Modifier
-//                        .align(Alignment.Bottom)
-//                        .padding(top = 4.dp),
-//                    text = "No",
-//                    style = AppTheme.typography.text16sp,
-//                    color = AlphaWhiteColor
-//                )
-//                Icon(
-//                    Icons.Outlined.Close,
-//                    contentDescription = null,
-//                    tint = Red
-//                )
-//            }
-//        }
-//    )
-//
-//}
-
-
-
 @Composable
 fun DeleteWorkoutAlertDialog(
-    workout: Workout,
     viewModel: ScreensUsingWorkoutViewModel = hiltViewModel()
 ) {
     AlertDialog(
@@ -142,8 +55,8 @@ fun DeleteWorkoutAlertDialog(
             Button(
                 modifier = Modifier.padding(4.dp),
                 onClick = {
-                    viewModel.deleteWorkoutFromRealtimeDatabase(workout)
-                    viewModel.deleteWorkoutFromWorkoutList(workout)
+                    viewModel.deleteWorkout(workout = viewModel.workoutToDelete!!)
+//                    println(viewModel.workoutToDelete)
                     viewModel.hideDeleteWorkoutAlertDialog()
 
                 },

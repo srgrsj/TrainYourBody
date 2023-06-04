@@ -1,4 +1,4 @@
-package com.srgrsj.tyb.presentation.screens.components
+package com.srgrsj.tyb.presentation.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

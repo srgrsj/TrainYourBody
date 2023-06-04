@@ -1,4 +1,4 @@
-package com.srgrsj.tyb.presentation.screens.components
+package com.srgrsj.tyb.presentation.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size

@@ -24,7 +24,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="already_account">Already have an account? Sign in</string>
     <string name="passwords_do_not_match">Passwords do not match!</string>
-    <string name="workouts_description">Here you can generate a workout using the Gpt3.5 artificial intelligence. After creation, it will be saved in the My Workouts section.</string>
+    <string name="workouts_description">Here you can generate a workout using the GPT3.5 artificial intelligence. After creation, it will be saved in the My Workouts section.</string>
     <string name="customize_workout_description">Here you can customize your own workout. After creation, it will be saved in the My Workouts section.</string>
     <string name="all_workouts_title">All workouts</string>
     <string name="see_all">See all</string>
@@ -35,10 +35,10 @@
     <string name="delete_workout">Delete workout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="repetitions">Repetitions</string>
+    <string name="repetitions">Repetitions:</string>
     <string name="duration_of_one_circle">Duration of one circle</string>
     <string name="rest_duration">Rest duration</string>
-    <string name="circles">Circles</string>
+    <string name="circles">Circles:</string>
     <string name="no_name">No name</string>
     <string name="title">Title</string>
     <string name="add">Add</string>
@@ -49,16 +49,21 @@
     <string name="save_exercise">Save exercise</string>
     <string name="save">Save</string>
     <string name="dont_save">Don\'t save</string>
+    <string name="status">Status:</string>
+    <string name="rest">Rest</string>
+    <string name="work">Work</string>
+
     <string name="generate_gpt_query_template">
         <![CDATA[
         Generate a workout for these muscle groups:
-        %1$s
-        The total duration required for completing the workout would be:
-        %2$s
-        Additional workout requirements (optional):
-        %3$s
+           %1$s
+        For the full implementation of which, the following time would be required:
+            %2$s
+        Additional training requirements (may be missing):
+            %3$s
 
-        The response should only contain a JSON instance of the following data classes:
+
+        The response must contain only a json instance of the following data classes:
 
         data class Workout(
             var title: String? = "",
@@ -81,30 +86,76 @@
             TIME, REPETITION
         }
 
-        Explanations for the fields in the classes:
+        Explanations of class fields:
 
         Workout:
-            title - workout title
-            description - workout description
-            duration - approximate duration of the workout
+        title - the name of the workout
+        description - description of the workout
+        duration - approximate duration of the workout
 
         Exercise:
-            title - exercise title
-            description - exercise description
-            numberOfRepetitions - number of repetitions per circle
-            numberOfCircles - number of circles
-            durationOfOneCircle - duration of one circle in milliseconds
-            durationOfRest - rest duration between circles
+        title - the name of the exercise
+        description - description of the exercise
+        numberOfRepetitions - the number of repetitions per round
+        numberOfCircles - number of circles
+        durationOfOneCircle - duration of one lap, in milliseconds
+        durationOfRest - duration of rest between laps
 
-        An instance of the Exercise class can be of two types:
-        TIME - Exercises to be performed for a specific duration
-        REPETITIONS - Exercises to be performed for a specific number of repetitions
+        an instance of the Exercise class can be of two types:
+        TIME - Exercises that need to be performed for a while
+        REPETITIONS - Exercises that need to be performed on repetitions
 
-        In the description, provide detailed instructions for performing each exercise
+        in the description, for each Exercise, describe in detail the process of performing this exercise, while the description should not contain information about the time of work and the number of repetitions
 
-        Time should be specified in milliseconds, and the duration of one circle for an exercise should not be less than 30 seconds
+        The time must be specified in milliseconds, as well as the time of one lap per exercise should not be less than 30 seconds.
         ]]>
     </string>
+    <string name="search">Search</string>
+    <string name="autors_workouts">Author\'s workouts</string>
+    <string name="x_ups">X-ups</string>
+    <string name="butterfly_machine">Butterfly machine</string>
+    <string name="burpee">Burpee</string>
+    <string name="parallel_bars_dip_bars">Parallel bars / Dip bars</string>
+    <string name="lunges">Lunges</string>
+    <string name="hyperextension">Hyperextension</string>
+    <string name="devils_press">Devil\'s press</string>
+    <string name="overhead_dumbbell_press">Overhead dumbbell press</string>
+    <string name="dumbbell_flyes">Dumbbell flyes</string>
+    <string name="dumbbell_press">Dumbbell press</string>
+    <string name="kettlebell_swings">Kettlebell swings</string>
+    <string name="reverse_push_ups">Reverse push-ups</string>
+    <string name="behind_the_neck_dumbbell_press">Behind-the-neck dumbbell press</string>
+    <string name="clap_push_ups">Clap push-ups</string>
+    <string name="push_ups">Push-ups</string>
+    <string name="plank_with_shoulder_taps">Plank with shoulder taps</string>
+    <string name="plank_with_hip_rotations">Plank with hip rotations</string>
+    <string name="plank">Plank</string>
+    <string name="pull_ups">Pull-ups</string>
+    <string name="dumbbell_bicep_curls">Dumbbell bicep curls</string>
+    <string name="kettlebell_chin_ups">Kettlebell chin-ups</string>
+    <string name="leg_raises">Leg raises</string>
+    <string name="alternating_dumbbell_front_raises">Alternating dumbbell front raises</string>
+    <string name="floor_press">Floor press</string>
+    <string name="regular_crunch">Regular crunch</string>
+    <string name="alternating_leg_raise_crunch">Alternating leg raise crunch</string>
+    <string name="jump_squats">Jump squats</string>
+    <string name="squats">Squats</string>
+    <string name="tuck_jumps">Tuck jumps</string>
+    <string name="dumbbell_lateral_raises">Dumbbell lateral raises</string>
+    <string name="thrusters">Thrusters</string>
+    <string name="lat_pulldown">Lat pulldown</string>
+    <string name="bent_over_dumbbell_rows">Bent-over dumbbell rows</string>
+    <string name="kettlebell_row">Kettlebell row</string>
+    <string name="cable_pull_through">Cable pull-through</string>
+    <string name="single_arm_dumbbell_row">Single-arm dumbbell row</string>
+    <string name="close_grip_dumbbell_press">Close-grip dumbbell press</string>
+
+    <string name="beginners_workout">Beginner\'s workout</string>
+    <string name="beginners_workout_description">Simple workout suitable for beginners</string>
+    <string name="intermediate_workout">Intermediate-level workout</string>
+    <string name="intermediate_workout_description">Advanced-level workout</string>
+    <string name="experienced_workout">Experienced-level workout</string>
+    <string name="experienced_workout_description">Intense workout designed for experienced athletes</string>
 
 
 </resources>

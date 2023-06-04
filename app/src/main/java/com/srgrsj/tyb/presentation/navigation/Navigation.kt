@@ -2,16 +2,16 @@ package com.srgrsj.tyb.presentation.navigation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.presentation.screens.accountScreen.AccountScreen
-import com.srgrsj.tyb.presentation.screens.components.SplashScreen
+import com.srgrsj.tyb.presentation.components.SplashScreen
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.GeneratorScreen
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen.GPTGeneratorScreen
-import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.allWorkouts.AllWorkouts
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.favScreen.FavScreen
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen.WorkoutRealizationScreen
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutScreen.WorkoutsScreen
@@ -21,6 +21,7 @@ import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.WorkoutPreviewSc
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.WorkoutPreviewScreenType
 
 
+@OptIn(ExperimentalAnimationApi::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun Navigation(
@@ -104,9 +105,6 @@ fun Navigation(
                     }
                 }
             )
-        }
-        composable(NavConstants.ALL_WORKOUTS) {
-            AllWorkouts()
         }
     }
 

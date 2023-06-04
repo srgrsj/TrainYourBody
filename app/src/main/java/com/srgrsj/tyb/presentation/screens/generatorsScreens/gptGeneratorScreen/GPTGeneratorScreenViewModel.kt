@@ -1,5 +1,6 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,6 +18,7 @@ import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.domain.workout.usecases.WorkoutUseCase
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.GeneratorsScreenViewModel
 import com.google.gson.Gson
+import com.srgrsj.tyb.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -36,66 +38,69 @@ class GPTGeneratorScreenViewModel @Inject constructor(
     var gptQuery by mutableStateOf("")
 
     fun generateGptQuery(
+        context: Context,
         muscleGroups: String,
         desiredDurationOfTraining: String,
         additionalWorkoutRequirements: String
     ) {
-        gptQuery = """
-        Сгенерируй тренировку на эти группы мышц:
-        $muscleGroups
-        На полное выполнение которой, потребоавлось бы следующее время:
-        $desiredDurationOfTraining
-        Дополнительные требования к тренировку (могут отсутствовать):
-        $additionalWorkoutRequirements
-        
-        
-        Ответ должен содержать только json экземпляр следующих data классов:
-        
-        data class Workout(
-            var title: String? = "",
-            var description: String? = "",
-            var duration: Long,
-            var exerciseList: List<Exercise> = listOf(),
-        )
-        
-        data class Exercise(
-            var title: String? = "",
-            var description: String? = "",
-            var numberOfRepetitions: Int,
-            var numberOfCircles: Int,
-            var durationOfOneCircle: Long,
-            var durationOfRest: Long,
-            var exerciseType: ExerciseType,
-        )
+        gptQuery = context.getString(R.string.generate_gpt_query_template, muscleGroups, desiredDurationOfTraining, additionalWorkoutRequirements)
 
-        enum class ExerciseType {
-            TIME, REPETITION
-        }
-        
-        Пояснения к полям классов:
-        
-        Workout:
-            title - название тренировки
-            description - описание тренировки
-            duration - примерная продолжительность тренировки
-        
-        Exercise:
-            title - название упражнения
-            description - описание упражнения
-            numberOfRepetitions - количество повторений за один круг
-            numberOfCircles - количество кругов
-            durationOfOneCircle - продолжительность одного круга, в миллисекундах
-            durationOfRest - продолжительность отдыха между кругами
-        
-        экземпляр класса Exercise может быть двух типов:
-        TIME - Упраженения, которые нужно выполять на время
-        REPETITIONS - Упражнения, которые нужно выполнять на повторения
-        
-        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения
-        
-        Время нужно указывать в миллискундах, а так же время одного круга на упражнение не должно быть не меньше 30 секунд
-         
-    """.trimIndent()
+//        gptQuery = """
+//        Сгенерируй тренировку на эти группы мышц:
+//        $muscleGroups
+//        На полное выполнение которой, потребоавлось бы следующее время:
+//        $desiredDurationOfTraining
+//        Дополнительные требования к тренировку (могут отсутствовать):
+//        $additionalWorkoutRequirements
+//
+//
+//        Ответ должен содержать только json экземпляр следующих data классов:
+//
+//        data class Workout(
+//            var title: String? = "",
+//            var description: String? = "",
+//            var duration: Long,
+//            var exerciseList: List<Exercise> = listOf(),
+//        )
+//
+//        data class Exercise(
+//            var title: String? = "",
+//            var description: String? = "",
+//            var numberOfRepetitions: Int,
+//            var numberOfCircles: Int,
+//            var durationOfOneCircle: Long,
+//            var durationOfRest: Long,
+//            var exerciseType: ExerciseType,
+//        )
+//
+//        enum class ExerciseType {
+//            TIME, REPETITION
+//        }
+//
+//        Пояснения к полям классов:
+//
+//        Workout:
+//            title - название тренировки
+//            description - описание тренировки
+//            duration - примерная продолжительность тренировки
+//
+//        Exercise:
+//            title - название упражнения
+//            description - описание упражнения
+//            numberOfRepetitions - количество повторений за один круг
+//            numberOfCircles - количество кругов
+//            durationOfOneCircle - продолжительность одного круга, в миллисекундах
+//            durationOfRest - продолжительность отдыха между кругами
+//
+//        экземпляр класса Exercise может быть двух типов:
+//        TIME - Упраженения, которые нужно выполять на время
+//        REPETITIONS - Упражнения, которые нужно выполнять на повторения
+//
+//        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения, при этом описание не должно содерджать информацию о времени работы и колличествах повторений
+//
+//        Время нужно указывать в миллискундах, а так же время одного круга на упражнение не должно быть не меньше 30 секунд
+//
+//    """.trimIndent()
     }
 
     var gptResponse by mutableStateOf("")

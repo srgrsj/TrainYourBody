@@ -1,4 +1,4 @@
-package com.srgrsj.tyb.domain.extenisons
+package com.srgrsj.tyb.domain.extensions
 
 import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.CancellationException

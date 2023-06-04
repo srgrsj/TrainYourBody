@@ -25,7 +25,7 @@
     <string name="sign_up">Зарегистрироваться</string>
     <string name="already_account">Уже есть аккаунт? Войдите</string>
     <string name="passwords_do_not_match">Пароли не совпадают!</string>
-    <string name="workouts_description">Здесь вы сможете сгенерировать тренировку с помощью искусственного интеллекта Gpt3.5. После создания она сохранится в разделе My Workouts.</string>
+    <string name="workouts_description">Здесь вы сможете сгенерировать тренировку с помощью искусственного интеллекта GPT3.5. После создания она сохранится в разделе My Workouts.</string>
     <string name="customize_workout_description">Здесь вы сможете самостоятельно настроить тренировку. После создания она сохранится в разделе My Workouts.</string>
     <string name="all_workouts_title">Все тренировки</string>
     <string name="see_all">Смотреть все</string>
@@ -36,10 +36,10 @@
     <string name="delete_workout">Удалить тренировку?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="repetitions">Повторы</string>
+    <string name="repetitions">Повторы:</string>
     <string name="duration_of_one_circle">Продолжительность одного круга</string>
     <string name="rest_duration">Продолжительность отдыха</string>
-    <string name="circles">Круги</string>
+    <string name="circles">Круги:</string>
     <string name="no_name">Без имени</string>
     <string name="title">Заголовок</string>
     <string name="add">Добавить</string>
@@ -50,14 +50,21 @@
     <string name="save_exercise">Сохранить упражнение</string>
     <string name="save">Сохранить</string>
     <string name="dont_save">Не сохранять</string>
+    <string name="status">Статус:</string>
+    <string name="rest">Отдых</string>
+    <string name="work">Работа</string>
+
+
+
     <string name="generate_gpt_query_template">
         <![CDATA[
         Сгенерируй тренировку на эти группы мышц:
         %1$s
-        На полное выполнение которой, потребовалось бы следующее время:
+        На полное выполнение которой, потребоавлось бы следующее время:
         %2$s
-        Дополнительные требования к тренировке (могут отсутствовать):
+        Дополнительные требования к тренировку (могут отсутствовать):
         %3$s
+
 
         Ответ должен содержать только json экземпляр следующих data классов:
 
@@ -98,12 +105,61 @@
             durationOfRest - продолжительность отдыха между кругами
 
         экземпляр класса Exercise может быть двух типов:
-        TIME - Упражнения, которые нужно выполять на время
+        TIME - Упраженения, которые нужно выполять на время
         REPETITIONS - Упражнения, которые нужно выполнять на повторения
 
-        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения
+        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения, при этом описание не должно содерджать информацию о времени работы и колличествах повторений
 
-        Время нужно указывать в миллисекундах, а также время одного круга на упражнение не должно быть меньше 30 секунд
+        Время нужно указывать в миллискундах, а так же время одного круга на упражнение не должно быть не меньше 30 секунд
         ]]>
     </string>
+    <string name="search">Поиск</string>
+    <string name="autors_workouts">Авторские тренировки</string>
+    <string name="x_ups">X-апы</string>
+    <string name="butterfly_machine">Бабочка на тренажере</string>
+    <string name="burpee">Берпи</string>
+    <string name="parallel_bars_dip_bars">Брусья</string>
+    <string name="lunges">Выпады</string>
+    <string name="hyperextension">Гиперэкстензия</string>
+    <string name="devils_press">Дьявольский жим</string>
+    <string name="overhead_dumbbell_press">Жим гантелей вверх</string>
+    <string name="dumbbell_flyes">Жим гантелей со сведением</string>
+    <string name="dumbbell_press">Жим гантелей</string>
+    <string name="kettlebell_swings">Махи гири</string>
+    <string name="reverse_push_ups">Обратные отжимания</string>
+    <string name="behind_the_neck_dumbbell_press">Опускание гантели за спину</string>
+    <string name="clap_push_ups">Отжимания с хлопком</string>
+    <string name="push_ups">Отжимания</string>
+    <string name="plank_with_shoulder_taps">Планка с касанием плеча</string>
+    <string name="plank_with_hip_rotations">Планка с переходами</string>
+    <string name="plank">Планка</string>
+    <string name="pull_ups">Подтягивания</string>
+    <string name="dumbbell_bicep_curls">Подъемы гантелей на бицепс</string>
+    <string name="kettlebell_chin_ups">Подъемы гири к подбородку</string>
+    <string name="leg_raises">Подъемы ног</string>
+    <string name="alternating_dumbbell_front_raises">Поочередные подъемы гантелей перед собой</string>
+    <string name="floor_press">Пресс на полу</string>
+    <string name="regular_crunch">Пресс обычный</string>
+    <string name="alternating_leg_raise_crunch">Пресс с поочередным подъемом ног</string>
+    <string name="jump_squats">Приседания с прыжком</string>
+    <string name="squats">Приседания</string>
+    <string name="tuck_jumps">Прыжки с подъемом рук</string>
+    <string name="dumbbell_lateral_raises">Разведения</string>
+    <string name="thrusters">Трастеры</string>
+    <string name="lat_pulldown">Тяга верхнего блока</string>
+    <string name="bent_over_dumbbell_rows">Тяга гантелей в наклоне</string>
+    <string name="kettlebell_row">Тяга гири</string>
+    <string name="cable_pull_through">Тяга нижнего блока</string>
+    <string name="single_arm_dumbbell_row">Тяга одной гантели</string>
+    <string name="close_grip_dumbbell_press">Узкий жим гантелей</string>
+
+    <string name="beginners_workout">Тренировка для начинающих</string>
+    <string name="beginners_workout_description">Простая тренировка, подходящая для новичков</string>
+    <string name="intermediate_workout">Тренировка средней сложности</string>
+    <string name="intermediate_workout_description">Тренировка для продвинутых</string>
+    <string name="experienced_workout">Тренировка для опытных</string>
+    <string name="experienced_workout_description">Интенсивная тренировка, разработанная для опытных спортсменов</string>
+
+
+
 </resources>
