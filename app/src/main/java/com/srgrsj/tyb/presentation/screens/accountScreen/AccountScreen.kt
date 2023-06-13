@@ -37,21 +37,6 @@ fun AccountScreen(
     val scope = rememberCoroutineScope()
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = stringResource(id = R.string.your_account_title),
-                    style = AppTheme.typography.title,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
     ) {
         Box(
             modifier = Modifier
@@ -59,7 +44,9 @@ fun AccountScreen(
                 .background(MainBackground)
         ) {
             Column(
-
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxHeight()
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -72,7 +59,7 @@ fun AccountScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
 
-                        Avatar(avatar = ACCOUNT_AVATAR)
+//                        Avatar(avatar = ACCOUNT_AVATAR)
 
                         Spacer(modifier = Modifier.height(20.dp))
 

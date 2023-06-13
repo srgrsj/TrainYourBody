@@ -13,22 +13,18 @@ import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
 import com.aallam.openai.client.OpenAIConfig
-import com.srgrsj.tyb.domain.exercise.usecase.ExerciseUseCase
+import com.google.gson.Gson
+import com.srgrsj.tyb.R
 import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.domain.workout.usecases.WorkoutUseCase
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.GeneratorsScreenViewModel
-import com.google.gson.Gson
-import com.srgrsj.tyb.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
 import javax.inject.Inject
-import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class GPTGeneratorScreenViewModel @Inject constructor(
@@ -43,64 +39,12 @@ class GPTGeneratorScreenViewModel @Inject constructor(
         desiredDurationOfTraining: String,
         additionalWorkoutRequirements: String
     ) {
-        gptQuery = context.getString(R.string.generate_gpt_query_template, muscleGroups, desiredDurationOfTraining, additionalWorkoutRequirements)
-
-//        gptQuery = """
-//        Сгенерируй тренировку на эти группы мышц:
-//        $muscleGroups
-//        На полное выполнение которой, потребоавлось бы следующее время:
-//        $desiredDurationOfTraining
-//        Дополнительные требования к тренировку (могут отсутствовать):
-//        $additionalWorkoutRequirements
-//
-//
-//        Ответ должен содержать только json экземпляр следующих data классов:
-//
-//        data class Workout(
-//            var title: String? = "",
-//            var description: String? = "",
-//            var duration: Long,
-//            var exerciseList: List<Exercise> = listOf(),
-//        )
-//
-//        data class Exercise(
-//            var title: String? = "",
-//            var description: String? = "",
-//            var numberOfRepetitions: Int,
-//            var numberOfCircles: Int,
-//            var durationOfOneCircle: Long,
-//            var durationOfRest: Long,
-//            var exerciseType: ExerciseType,
-//        )
-//
-//        enum class ExerciseType {
-//            TIME, REPETITION
-//        }
-//
-//        Пояснения к полям классов:
-//
-//        Workout:
-//            title - название тренировки
-//            description - описание тренировки
-//            duration - примерная продолжительность тренировки
-//
-//        Exercise:
-//            title - название упражнения
-//            description - описание упражнения
-//            numberOfRepetitions - количество повторений за один круг
-//            numberOfCircles - количество кругов
-//            durationOfOneCircle - продолжительность одного круга, в миллисекундах
-//            durationOfRest - продолжительность отдыха между кругами
-//
-//        экземпляр класса Exercise может быть двух типов:
-//        TIME - Упраженения, которые нужно выполять на время
-//        REPETITIONS - Упражнения, которые нужно выполнять на повторения
-//
-//        в description, для каждого Exercise, подробно опиши процесс выполнения этого упражнения, при этом описание не должно содерджать информацию о времени работы и колличествах повторений
-//
-//        Время нужно указывать в миллискундах, а так же время одного круга на упражнение не должно быть не меньше 30 секунд
-//
-//    """.trimIndent()
+        gptQuery = context.getString(
+            R.string.generate_gpt_query_template,
+            muscleGroups,
+            desiredDurationOfTraining,
+            additionalWorkoutRequirements
+        )
     }
 
     var gptResponse by mutableStateOf("")
@@ -162,7 +106,7 @@ class GPTGeneratorScreenViewModel @Inject constructor(
     }
 
     companion object {
-        const val CHAT_GPT_API_KEY = ""
+        const val CHAT_GPT_API_KEY = "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"
     }
 
 

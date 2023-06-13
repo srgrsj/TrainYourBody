@@ -50,21 +50,21 @@ fun WorkoutPreviewScreen(
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = workout?.title.toString(),
-                    style = AppTheme.typography.subtitle,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
+//        topBar = {
+//            TopAppBar(
+//                backgroundColor = TopBarColor,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//            ) {
+//                Text(
+//                    text = workout?.title.toString(),
+//                    style = AppTheme.typography.subtitle,
+//                    color = TopBarText,
+//                    modifier = Modifier
+//                        .padding(start = 12.dp)
+//                )
+//            }
+//        }
     ) {
         Box(
             modifier = Modifier
@@ -75,6 +75,19 @@ fun WorkoutPreviewScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp)
+                ) {
+                    Text(
+                        text = workout?.title.toString(),
+                        style = AppTheme.typography.title
+                    )
+                }
+
                 Spacer(modifier = Modifier.width(25.dp))
 
                 Column(

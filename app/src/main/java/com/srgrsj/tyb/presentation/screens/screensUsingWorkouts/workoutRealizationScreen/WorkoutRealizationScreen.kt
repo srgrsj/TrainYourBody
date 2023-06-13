@@ -58,21 +58,21 @@ fun WorkoutRealizationScreen(
     val currentExercise = exerciseList?.getOrNull(viewModel.currentExerciseIndex)
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = displayingWorkout.value?.title ?: "no data",
-                    style = AppTheme.typography.subtitle,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
+//        topBar = {
+//            TopAppBar(
+//                backgroundColor = TopBarColor,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//            ) {
+//                Text(
+//                    text = displayingWorkout.value?.title ?: "no data",
+//                    style = AppTheme.typography.subtitle,
+//                    color = TopBarText,
+//                    modifier = Modifier
+//                        .padding(start = 12.dp)
+//                )
+//            }
+//        }
     ) {
         Box(
             modifier = Modifier

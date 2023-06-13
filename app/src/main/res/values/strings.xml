@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TYB</string>
-    <string name="create_workout">Create Workout</string>
+    <string name="create_workout_section">Create Workout</string>
     <string name="gpt_generator_title">AI Generator</string>
     <string name="muscle_groups">Muscle Groups</string>
     <string name="desired_duration">Desired Duration of Training</string>
@@ -13,7 +13,7 @@
     <string name="exercise_circles">Circles: </string>
     <string name="next_exercise">Next Exercise</string>
     <string name="workouts_title">Workouts</string>
-    <string name="all_workouts">All Workouts</string>
+    <string name="all_workouts">Your Workouts</string>
     <string name="signin_title">Sign In</string>
     <string name="enter_email">Enter email</string>
     <string name="enter_password">Enter password</string>
@@ -36,8 +36,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="repetitions">Repetitions:</string>
-    <string name="duration_of_one_circle">Duration of one circle</string>
-    <string name="rest_duration">Rest duration</string>
+    <string name="duration_of_one_circle">Work:</string>
+    <string name="rest_duration">Rest:</string>
     <string name="circles">Circles:</string>
     <string name="no_name">No name</string>
     <string name="title">Title</string>
@@ -156,6 +156,9 @@
     <string name="intermediate_workout_description">Advanced-level workout</string>
     <string name="experienced_workout">Experienced-level workout</string>
     <string name="experienced_workout_description">Intense workout designed for experienced athletes</string>
-
+    <string name="gpt_generator_error">The fields "Muscle groups" and "Desired duration of workout" should not be empty</string>
+    <string name="create_workout">Create Workout</string>
+    <string name="account">Account</string>
+    <string name="workouts">Workouts</string>
 
 </resources>

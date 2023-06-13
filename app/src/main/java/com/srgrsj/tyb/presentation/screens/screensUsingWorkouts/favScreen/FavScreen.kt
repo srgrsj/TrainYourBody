@@ -7,7 +7,6 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,8 +21,6 @@ import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.components.Worko
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.WorkoutPreviewScreenType
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -35,21 +32,6 @@ fun FavScreen(
     val displayingWorkoutList by viewModel.workoutList.collectAsState()
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = stringResource(id = R.string.fav_screen_title),
-                    style = AppTheme.typography.title,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
     ) {
 
         Box(
@@ -62,9 +44,10 @@ fun FavScreen(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
 
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Row {
+                Row(
+                    modifier = Modifier
+                        .padding(top = 20.dp)
+                ) {
                     Spacer(modifier = Modifier.width(15.dp))
 
 

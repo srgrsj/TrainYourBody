@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TYB</string>
-    <string name="create_workout">Создание тренировки</string>
+    <string name="create_workout_section">Создание тренировки</string>
     <string name="gpt_generator_title">ИИ Генератор</string>
     <string name="muscle_groups">Группы мышц</string>
     <string name="desired_duration">Время тренировки</string>
@@ -14,7 +14,7 @@
     <string name="exercise_circles">Кругов: </string>
     <string name="next_exercise">К следующему упражнению</string>
     <string name="workouts_title">Тренировки</string>
-    <string name="all_workouts">Все тренировки</string>
+    <string name="all_workouts">Ваши тренировки</string>
     <string name="signin_title">Вход</string>
     <string name="enter_email">Введите email</string>
     <string name="enter_password">Введите пароль</string>
@@ -37,8 +37,8 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="repetitions">Повторы:</string>
-    <string name="duration_of_one_circle">Продолжительность одного круга</string>
-    <string name="rest_duration">Продолжительность отдыха</string>
+    <string name="duration_of_one_circle">Работы:</string>
+    <string name="rest_duration">Отдыха:</string>
     <string name="circles">Круги:</string>
     <string name="no_name">Без имени</string>
     <string name="title">Заголовок</string>
@@ -159,7 +159,9 @@
     <string name="intermediate_workout_description">Тренировка для продвинутых</string>
     <string name="experienced_workout">Тренировка для опытных</string>
     <string name="experienced_workout_description">Интенсивная тренировка, разработанная для опытных спортсменов</string>
-
-
+    <string name="gpt_generator_error">Поля "Группы мышц" и "Желаемая продолжительность тренировки" не должны быть пустыми</string>
+    <string name="create_workout">Создать Тренировку</string>
+    <string name="account">Аккаунт</string>
+    <string name="workouts">Тренировки</string>
 
 </resources>

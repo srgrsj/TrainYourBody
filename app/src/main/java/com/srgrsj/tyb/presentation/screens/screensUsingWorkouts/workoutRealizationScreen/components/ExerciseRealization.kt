@@ -62,7 +62,6 @@ fun ExerciseRealization(
                 .border(3.dp, Color.Black, RoundedCornerShape(20))
 
         ) {
-
             when (exercise.exerciseType) {
                 ExerciseType.TIME -> {
                     Row(
@@ -72,7 +71,7 @@ fun ExerciseRealization(
                         Text(
                             text = exercise.title.toString(),
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(horizontal = 16.dp),
+                            modifier = Modifier.padding(vertical = 5.dp, horizontal = 16.dp),
                             style = AppTheme.typography.subtitle,
                             color = Color.Black
                         )
@@ -152,7 +151,7 @@ fun ExerciseRealization(
                         Text(
                             text = exercise.title.toString(),
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(horizontal = 16.dp),
+                            modifier = Modifier.padding(vertical = 5.dp,horizontal = 16.dp),
                             style = AppTheme.typography.subtitle,
                             color = Color.Black
                         )

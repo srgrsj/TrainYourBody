@@ -1,6 +1,7 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -22,10 +23,8 @@ import com.srgrsj.tyb.domain.workout.model.WorkoutGenerationType
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.WorkoutPreviewScreenType
 import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
+import com.srgrsj.tyb.presentation.theme.Blue
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.presentation.theme.Red
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -57,6 +56,8 @@ fun GPTGeneratorScreen(
         mutableStateOf(false)
     }
 
+    var isTextFieldsInError by remember { mutableStateOf(false) }
+
 
     if (isWorkoutGenerate) {
         if (generatedWorkout != null && navigateToWorkoutPreviewScreen != null) {
@@ -67,21 +68,21 @@ fun GPTGeneratorScreen(
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = stringResource(id = R.string.gpt_generator_title),
-                    style = AppTheme.typography.title,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
+//        topBar = {
+//            TopAppBar(
+//                backgroundColor = TopBarColor,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//            ) {
+//                Text(
+//                    text = stringResource(id = R.string.gpt_generator_title),
+//                    style = AppTheme.typography.title,
+//                    color = TopBarText,
+//                    modifier = Modifier
+//                        .padding(start = 12.dp)
+//                )
+//            }
+//        }
     ) {
         Box(
             modifier = Modifier
@@ -94,6 +95,18 @@ fun GPTGeneratorScreen(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = "GPT",
+                        style = AppTheme.typography.title
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -104,6 +117,9 @@ fun GPTGeneratorScreen(
                         .fillMaxSize()
                 ) {
                     TextField(
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f),
+                        isError = isTextFieldsInError,
                         value = muscleGroupsTextField,
                         onValueChange = {
                             muscleGroupsTextField = it
@@ -121,6 +137,9 @@ fun GPTGeneratorScreen(
                     Spacer(modifier = Modifier.height(20.dp))
 
                     TextField(
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f),
+                        isError = isTextFieldsInError,
                         value = desiredDurationOfTrainingTextField,
                         onValueChange = {
                             desiredDurationOfTrainingTextField = it
@@ -138,6 +157,8 @@ fun GPTGeneratorScreen(
                     Spacer(modifier = Modifier.height(20.dp))
 
                     TextField(
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f),
                         value = additionalWorkoutRequirementsTextField,
                         onValueChange = {
                             additionalWorkoutRequirementsTextField = it
@@ -156,19 +177,28 @@ fun GPTGeneratorScreen(
 
                     Button(
                         modifier = Modifier
-                            .height(50.dp),
+                            .height(50.dp)
+                            .fillMaxWidth(0.8f),
                         onClick = {
-                            viewModel.generateGptQuery(
-                                context,
-                                muscleGroupsTextField,
-                                desiredDurationOfTrainingTextField,
-                                additionalWorkoutRequirementsTextField
-                            )
-//                    viewModel.gptQuery = "напиши, что это тестовове сообщение"
-                            viewModel.getGPTResponse()
-                            isInProgress = true
+                            if (
+                                muscleGroupsTextField.isNotEmpty() &&
+                                desiredDurationOfTrainingTextField.isNotEmpty()
+                            ) {
+                                isTextFieldsInError = false
+
+                                viewModel.generateGptQuery(
+                                    context,
+                                    muscleGroupsTextField,
+                                    desiredDurationOfTrainingTextField,
+                                    additionalWorkoutRequirementsTextField
+                                )
+                                viewModel.getGPTResponse()
+                                isInProgress = true
+                            } else {
+                                isTextFieldsInError = true
+                            }
                         },
-                        colors = ButtonDefaults.buttonColors(Red)
+                        colors = ButtonDefaults.buttonColors(Blue)
                     ) {
                         Text(
                             text = stringResource(id = R.string.generate_workout),

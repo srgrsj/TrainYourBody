@@ -1,8 +1,5 @@
 package com.srgrsj.tyb.presentation.navigation
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -10,12 +7,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.srgrsj.tyb.R
 import com.srgrsj.tyb.presentation.theme.NavBarColor
 import com.srgrsj.tyb.presentation.theme.SelectedNavBarItem
 import com.srgrsj.tyb.presentation.theme.UnselectedNavBarItem
@@ -25,9 +22,16 @@ fun NavBar(
     navController: NavController
 ) {
     val listItems = listOf(
-        NavBarItem.FavScreen,
-        NavBarItem.WorkoutsScreen,
-        NavBarItem.AccountScreen
+        NavBarItem(
+            stringResource(id = R.string.workouts),
+            R.drawable.baseline_sports_martial_arts_24,
+            NavConstants.WORKOUTS
+        ),
+        NavBarItem(
+            stringResource(id = R.string.account),
+            R.drawable.baseline_account_circle_24,
+            NavConstants.ACCOUNT
+        )
     )
 
     BottomNavigation(
@@ -41,7 +45,7 @@ fun NavBar(
             BottomNavigationItem(
                 selected = currentRout == item.route,
                 onClick = {
-                          navController.navigate(item.route)
+                    navController.navigate(item.route)
                 },
                 icon = {
                     Icon(

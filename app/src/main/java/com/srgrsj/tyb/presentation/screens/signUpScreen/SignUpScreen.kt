@@ -41,7 +41,6 @@ fun SignUpScreen(
 ) {
     var userEmail by remember { mutableStateOf("") }
     var userPassword by remember { mutableStateOf("") }
-    var userName by remember { mutableStateOf("") }
     val state = viewModel.signUpState.collectAsState(initial = null)
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -54,21 +53,21 @@ fun SignUpScreen(
 
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = TopBarColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = stringResource(id = R.string.signup_title),
-                    style = AppTheme.typography.title,
-                    color = TopBarText,
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                )
-            }
-        }
+//        topBar = {
+//            TopAppBar(
+//                backgroundColor = TopBarColor,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//            ) {
+//                Text(
+//                    text = stringResource(id = R.string.signup_title),
+//                    style = AppTheme.typography.title,
+//                    color = TopBarText,
+//                    modifier = Modifier
+//                        .padding(start = 12.dp)
+//                )
+//            }
+//        }
     ) {
 
         Box(

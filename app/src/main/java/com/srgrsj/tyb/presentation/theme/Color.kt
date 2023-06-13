@@ -5,72 +5,47 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Brush
 
-//val MainBackground = Color(0xFFFFC373)
+//Colors
+val Red = Color(0xFFf00038)
+val Green = Color(0xFF098F04)
+val DarkGray = Color(0xFF5E5E5E)
+val AlphaWhiteColor = Color(0xB2FFFFFF)
+//val Blue = Color(0xFF03A9F4)
+val Blue = Color(0xFF4C34D5)
+val LightGreen = Color(0xFF8BC34A)
+val Gray = Color(0xFF1F1F1F)
 
 
-//val MainBackground = Color(0xff363438)
-//
-//val CardsBackground = Color(0xfff96f4d)
-//
-//val TopBarColor = Color(0xFF222222)
-//
-//val GeneratorWidgetColor = Color(0xfff96f4d)
-//val GeneratorButtonBackground = Color(0xff757575)
-//
-//val GptGeneratorWidgetColor = Color(0xFF673AB7)
-//val GptGeneratorButtonBackground = Color(0xFF03A9F4)
-//
-//val AvatarBorderColor = Color(0xfff96f4d)
-//
-//val AlphaWhiteColor = Color(0xB2FFFFFF)
-//
-////NavBarColors
-//val NavBarColor = Color(0xFF242326)
-//val SelectedNavBarItem = Color(0xfff96f4d)
-//val UnselectedNavBarItem = Color(0xFFFFFFFF)
-//
-////Colors
-//val Gray = Color(0xff757575)
-//val Red = Color(0xfff96f4d)
+//val Red = Color(0xFFd07387)
 //val Green = Color(0xFF098F04)
-//val LightRed = Color(0xFFFF0000)
 //val DarkGray = Color(0xFF5E5E5E)
-//val LightGray = Color(0xFF8F8F8F)
+//val AlphaWhiteColor = Color(0xB2FFFFFF)
+////val Blue = Color(0xFF03A9F4)
+//val Blue = Color(0xFF354c78)
+//val LightGreen = Color(0xFF8f9fae)
+//val Gray = Color(0xFF1F1F1F)
 
 
+val CreateWorkoutButtonGradient = Brush.horizontalGradient(listOf(Red, Blue))
 
 val TopBarText = Color(0xE6FFFFFF)
-
-val MainBackground = Color(0xFF1F1F1F)
-
-val CardsBackground = Color(0xFFFF5025)
-
+val MainBackground = Gray
+val CardsBackground = Red
 val TopBarColor = Color(0xFF292929)
 
-val GeneratorWidgetColor = Color(0xFFFF5025)
-val GeneratorButtonBackground = Color(0xff757575)
+val GptGeneratedWorkoutCardsColor= Blue
 
-val GptGeneratorWidgetColor = Color(0xFF4C34D5)
-val GptGeneratedWorkoutCardsColor= Color(0xFF4C34D5)
-val GptGeneratorButtonBackground = Color(0xFF03A9F4)
-
-val AuthorWorkoutsCardColor = Color(0xFF8BC34A)
+val AuthorWorkoutsCardColor = LightGreen
 
 
 //NavBarColors
 val NavBarColor = Color(0xFF1F1F1F)
-val SelectedNavBarItem = Color(0xFFFF5025)
+val SelectedNavBarItem = Red
 val UnselectedNavBarItem = Color(0xFFFFFFFF)
 
-//Colors
-val Gray = Color(0xff757575)
-val Red = Color(0xFFFF5025)
-val Green = Color(0xFF098F04)
-val LightRed = Color(0xFFFF0000)
-val DarkGray = Color(0xFF5E5E5E)
-val LightGray = Color(0xFF8F8F8F)
-val AlphaWhiteColor = Color(0xB2FFFFFF)
+
 
 
 

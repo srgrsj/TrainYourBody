@@ -12,6 +12,7 @@ import com.srgrsj.tyb.presentation.screens.accountScreen.AccountScreen
 import com.srgrsj.tyb.presentation.components.SplashScreen
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.GeneratorScreen
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen.GPTGeneratorScreen
+import com.srgrsj.tyb.presentation.screens.generatorsScreens.selectGeneratorScreen.SelectGeneratorScreen
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.favScreen.FavScreen
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen.WorkoutRealizationScreen
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutScreen.WorkoutsScreen
@@ -62,11 +63,11 @@ fun Navigation(
                 { navHostController.navigate(NavConstants.SIGN_IN) }
             )
         }
-        composable(NavConstants.GENERATOR) {
-            GeneratorScreen(
-                { navHostController.navigate(NavConstants.WORKOUTS) }
-            )
-        }
+//        composable(NavConstants.GENERATOR) {
+//            GeneratorScreen(
+//                { navHostController.navigate(NavConstants.WORKOUTS) }
+//            )
+//        }
         composable(NavConstants.SIGN_UP) {
             SignUpScreen(
                 navigateToWorkoutsScreen = { navHostController.navigate(NavConstants.WORKOUTS) },
@@ -84,17 +85,17 @@ fun Navigation(
                 navHostController
             )
         }
-        composable(NavConstants.GPT_GENERATOR) {
-            GPTGeneratorScreen(
-                { workout: Workout, type: WorkoutPreviewScreenType ->
-                    navHostController.apply {
-                        currentBackStackEntry?.savedStateHandle?.set("workout", workout)
-                        currentBackStackEntry?.savedStateHandle?.set("type", type)
-                        navigate(NavConstants.WORKOUT_PREVIEW)
-                    }
-                }
-            )
-        }
+//        composable(NavConstants.GPT_GENERATOR) {
+//            GPTGeneratorScreen(
+//                { workout: Workout, type: WorkoutPreviewScreenType ->
+//                    navHostController.apply {
+//                        currentBackStackEntry?.savedStateHandle?.set("workout", workout)
+//                        currentBackStackEntry?.savedStateHandle?.set("type", type)
+//                        navigate(NavConstants.WORKOUT_PREVIEW)
+//                    }
+//                }
+//            )
+//        }
         composable(NavConstants.WORKOUT_PREVIEW) {
             WorkoutPreviewScreen(
                 navController = navHostController,
@@ -105,6 +106,17 @@ fun Navigation(
                     }
                 }
             )
+        }
+        composable(NavConstants.SELECT_GENERATOR_SCREEN) {
+            SelectGeneratorScreen(
+                navController = navHostController
+            ) { workout: Workout, type: WorkoutPreviewScreenType ->
+                navHostController.apply {
+                    currentBackStackEntry?.savedStateHandle?.set("workout", workout)
+                    currentBackStackEntry?.savedStateHandle?.set("type", type)
+                    navigate(NavConstants.WORKOUT_PREVIEW)
+                }
+            }
         }
     }
 

@@ -1,9 +1,14 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.components
 
 import android.content.res.Resources
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AlertDialog
@@ -35,6 +40,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.srgrsj.tyb.R
 import com.srgrsj.tyb.domain.exercise.model.Exercise
 import com.srgrsj.tyb.domain.exercise.model.ExerciseType
+import com.srgrsj.tyb.presentation.components.TimePicker
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.DefaultGeneratorScreenViewModel
 import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
@@ -42,6 +48,7 @@ import com.srgrsj.tyb.presentation.theme.Green
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 fun AddExerciseAlertDialog(
@@ -49,21 +56,26 @@ fun AddExerciseAlertDialog(
 ) {
     var title: String by remember { mutableStateOf("") }
     var numberOfRepetitions: String by remember { mutableStateOf("") }
+    var numberOfRepetitionsIsError by remember { mutableStateOf(false) }
     var numberOfCircles: String by remember { mutableStateOf("") }
-    var durationOfOneCircle: String by remember { mutableStateOf("") }
-    var durationOfRest: String by remember { mutableStateOf("") }
+    var numberOfCirclesIsError by remember { mutableStateOf(false) }
+    var durationOfOneCircle = remember { mutableStateOf(0L) }
+    var durationOfOneCircleIsError by remember { mutableStateOf(false) }
+    var durationOfRest = remember { mutableStateOf(0L) }
+    var durationOfRestIsError by remember { mutableStateOf(false) }
     var exerciseType: ExerciseType by remember { mutableStateOf(ExerciseType.REPETITION) }
     var dropdownOpen: Boolean by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     AlertDialog(
+        modifier = Modifier
+            .fillMaxHeight(0.87f),
         onDismissRequest = {
             viewModel.hideAddExerciseAlertDialog()
         },
         backgroundColor = MainBackground,
         text = {
             Column(
-                modifier = Modifier,
                 verticalArrangement = Arrangement.spacedBy(2.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -130,6 +142,7 @@ fun AddExerciseAlertDialog(
                 if (exerciseType == ExerciseType.REPETITION) {
                     OutlinedTextField(
                         value = numberOfRepetitions,
+                        isError = numberOfRepetitionsIsError,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         colors = TextFieldDefaults.textFieldColors(
                             textColor = AlphaWhiteColor,
@@ -146,49 +159,93 @@ fun AddExerciseAlertDialog(
                         }
                     )
                 } else if (exerciseType == ExerciseType.TIME) {
-                    OutlinedTextField(
-                        value = durationOfOneCircle,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        colors = TextFieldDefaults.textFieldColors(
-                            textColor = AlphaWhiteColor
-                        ),
-                        onValueChange = {
-                            durationOfOneCircle = it
-                        },
-                        label = {
+//                    OutlinedTextField(
+//                        value = durationOfOneCircle,
+//                        isError = durationOfOneCircleIsError,
+//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+//                        colors = TextFieldDefaults.textFieldColors(
+//                            textColor = AlphaWhiteColor
+//                        ),
+//                        onValueChange = {
+//                            durationOfOneCircle = it
+//                        },
+//                        label = {
+//                            Text(
+//                                text = stringResource(id = R.string.duration_of_one_circle),
+//                                style = AppTheme.typography.text16sp,
+//                                color = AlphaWhiteColor
+//                            )
+//                        }
+//                    )
+
+
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.Start,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        ) {
                             Text(
+                                modifier = Modifier
+                                    .padding(start = 5.dp, bottom = 5.dp),
                                 text = stringResource(id = R.string.duration_of_one_circle),
                                 style = AppTheme.typography.text16sp,
                                 color = AlphaWhiteColor
                             )
                         }
-                    )
+                        TimePicker(value = durationOfOneCircle)
+                    }
+
 
                     Spacer(modifier = Modifier.padding(vertical = 2.dp))
 
-                    OutlinedTextField(
-                        value = durationOfRest,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        colors = TextFieldDefaults.textFieldColors(
-                            textColor = AlphaWhiteColor
-                        ),
-                        onValueChange = {
-                            durationOfRest = it
-                        },
-                        label = {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        ) {
                             Text(
+                                modifier = Modifier
+                                    .padding(start = 5.dp, bottom = 5.dp),
                                 text = stringResource(id = R.string.rest_duration),
                                 style = AppTheme.typography.text16sp,
                                 color = AlphaWhiteColor
                             )
                         }
-                    )
+                        TimePicker(value = durationOfRest)
+                    }
+
+//                    OutlinedTextField(
+//                        value = durationOfRest,
+//                        isError = durationOfRestIsError,
+//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+//                        colors = TextFieldDefaults.textFieldColors(
+//                            textColor = AlphaWhiteColor
+//                        ),
+//                        onValueChange = {
+//                            durationOfRest = it
+//                        },
+//                        label = {
+//                            Text(
+//                                text = stringResource(id = R.string.rest_duration),
+//                                style = AppTheme.typography.text16sp,
+//                                color = AlphaWhiteColor
+//                            )
+//                        }
+//                    )
                 }
 
                 Spacer(modifier = Modifier.padding(vertical = 2.dp))
 
                 OutlinedTextField(
                     value = numberOfCircles,
+                    isError = numberOfCirclesIsError,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     colors = TextFieldDefaults.textFieldColors(
                         textColor = AlphaWhiteColor
@@ -212,48 +269,63 @@ fun AddExerciseAlertDialog(
             Button(
                 modifier = Modifier.padding(4.dp),
                 onClick = {
-
-                    if (title.isEmpty()) {
-                        val resources: Resources = context.resources
-
-                        title = resources.getString(R.string.no_name)
-                    }
-
                     if (numberOfCircles.isEmpty()) {
-                        numberOfCircles = "1"
+                        numberOfCirclesIsError = true
                     }
 
                     if (exerciseType == ExerciseType.REPETITION) {
                         if (numberOfRepetitions.isEmpty()) {
-                            numberOfRepetitions = "1"
+                            numberOfRepetitionsIsError = true
                         }
-                        viewModel.saveExerciseToExerciseList(
-                            Exercise(
-                                title = title,
-                                numberOfRepetitions = numberOfRepetitions.toInt(),
-                                numberOfCircles = numberOfCircles.toInt(),
-                                exerciseType = exerciseType
-                            )
-                        )
-                    } else if (exerciseType == ExerciseType.TIME) {
-                        if (durationOfOneCircle.isEmpty()) {
-                            durationOfOneCircle = "10"
-                        }
-                        if (durationOfRest.isEmpty()) {
-                            durationOfRest = "10"
-                        }
-                        viewModel.saveExerciseToExerciseList(
-                            Exercise(
-                                title = title,
-                                numberOfCircles = numberOfCircles.toInt(),
-                                durationOfOneCircle = durationOfOneCircle.toLong() * 1000,
-                                durationOfRest = durationOfRest.toLong() * 1000,
-                                exerciseType = exerciseType
-                            )
-                        )
-                    }
 
-                    viewModel.hideAddExerciseAlertDialog()
+                        if (numberOfRepetitions.isNotEmpty() && numberOfCircles.isNotEmpty()) {
+                            numberOfCirclesIsError = false
+                            numberOfRepetitionsIsError = false
+
+                            if (title.isEmpty()) {
+                                val resources: Resources = context.resources
+
+                                title = resources.getString(R.string.no_name)
+                            }
+
+                            viewModel.saveExerciseToExerciseList(
+                                Exercise(
+                                    title = title,
+                                    numberOfRepetitions = numberOfRepetitions.toInt(),
+                                    numberOfCircles = numberOfCircles.toInt(),
+                                    exerciseType = exerciseType
+                                )
+                            )
+
+                            viewModel.hideAddExerciseAlertDialog()
+                        }
+
+                    } else if (exerciseType == ExerciseType.TIME) {
+
+                        if (numberOfCircles.isNotEmpty()) {
+                            durationOfOneCircleIsError = false
+                            durationOfRestIsError = false
+                            numberOfCirclesIsError = false
+
+                            if (title.isEmpty()) {
+                                val resources: Resources = context.resources
+
+                                title = resources.getString(R.string.no_name)
+                            }
+
+                            viewModel.saveExerciseToExerciseList(
+                                Exercise(
+                                    title = title,
+                                    numberOfCircles = numberOfCircles.toInt(),
+                                    durationOfOneCircle = durationOfOneCircle.value,
+                                    durationOfRest = durationOfRest.value,
+                                    exerciseType = exerciseType
+                                )
+                            )
+
+                            viewModel.hideAddExerciseAlertDialog()
+                        }
+                    }
                 },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = MainBackground
