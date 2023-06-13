@@ -181,7 +181,7 @@ fun WorkoutsScreen(
                         .padding(top = 5.dp)
                         .horizontalScroll(rememberScrollState())
                 ) {
-                    Spacer(modifier = Modifier.width(10.dp))
+                    Spacer(modifier = Modifier.width(15.dp))
 
                     displayingWorkoutList.forEach { workout ->
                         if (workout.isInFav == true) {
@@ -195,8 +195,8 @@ fun WorkoutsScreen(
                                     )
                                 }
                             )
+                            Spacer(modifier = Modifier.width(10.dp))
                         }
-                        Spacer(modifier = Modifier.width(10.dp))
                     }
                 }
             }

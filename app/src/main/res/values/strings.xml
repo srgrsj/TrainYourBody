@@ -160,5 +160,6 @@
     <string name="create_workout">Create Workout</string>
     <string name="account">Account</string>
     <string name="workouts">Workouts</string>
+    <string name="save_workout">Save Workout</string>
 
 </resources>

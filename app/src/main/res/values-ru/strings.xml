@@ -21,7 +21,7 @@
     <string name="sign_in">Войти</string>
     <string name="no_account">Еще нет аккаунта? Зарегистрируйтесь</string>
     <string name="signup_title">Регистрация</string>
-    <string name="repeat_password">Повторно введите пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="already_account">Уже есть аккаунт? Войдите</string>
     <string name="passwords_do_not_match">Пароли не совпадают!</string>
@@ -163,5 +163,6 @@
     <string name="create_workout">Создать Тренировку</string>
     <string name="account">Аккаунт</string>
     <string name="workouts">Тренировки</string>
+    <string name="save_workout">Сохранить Тренировку</string>
 
 </resources>

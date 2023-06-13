@@ -1,7 +1,9 @@
 package com.srgrsj.tyb.presentation.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +21,7 @@ import com.commandiron.wheel_picker_compose.core.WheelPickerDefaults
 import com.commandiron.wheel_picker_compose.core.WheelTextPicker
 import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
-import com.srgrsj.tyb.presentation.theme.Red
+import com.srgrsj.tyb.presentation.theme.WheelPicker
 
 @Composable
 fun TimePicker(
@@ -33,7 +35,9 @@ fun TimePicker(
     var sec by remember { mutableStateOf(0) }
 
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
     ) {
         WheelTextPicker(
             texts = minList,
@@ -47,8 +51,8 @@ fun TimePicker(
                 null
             },
             selectorProperties = WheelPickerDefaults.selectorProperties(
-                color = Color.Transparent,
-                border = BorderStroke(1.dp, Red)
+                color = WheelPicker,
+                border = BorderStroke(1.dp, Color.Black)
             )
         )
         Text(
@@ -71,8 +75,8 @@ fun TimePicker(
                 null
             },
             selectorProperties = WheelPickerDefaults.selectorProperties(
-                color = Color.Transparent,
-                border = BorderStroke(1.dp, Red)
+                color = WheelPicker,
+                border = BorderStroke(1.dp, Color.Black)
             )
         )
     }

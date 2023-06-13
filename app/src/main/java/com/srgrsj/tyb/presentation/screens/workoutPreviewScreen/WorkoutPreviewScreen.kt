@@ -80,11 +80,12 @@ fun WorkoutPreviewScreen(
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 10.dp)
+                        .padding(vertical = 10.dp, horizontal = 2.dp)
                 ) {
                     Text(
                         text = workout?.title.toString(),
-                        style = AppTheme.typography.title
+                        style = AppTheme.typography.title,
+                        textAlign = TextAlign.Center
                     )
                 }
 
@@ -100,6 +101,8 @@ fun WorkoutPreviewScreen(
 
                     workout?.description?.let { it1 ->
                         Text(
+                            modifier = Modifier
+                                .padding(horizontal = 2.dp),
                             text = it1,
                             style = AppTheme.typography.subtitle,
                             textAlign = TextAlign.Center

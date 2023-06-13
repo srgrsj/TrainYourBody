@@ -16,6 +16,7 @@ val AlphaWhiteColor = Color(0xB2FFFFFF)
 val Blue = Color(0xFF4C34D5)
 val LightGreen = Color(0xFF8BC34A)
 val Gray = Color(0xFF1F1F1F)
+val WheelPicker = Color(0xFF1c1a1c)
 
 
 //val Red = Color(0xFFd07387)

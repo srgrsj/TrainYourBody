@@ -83,7 +83,7 @@ fun AnimatedTextBlock(
 
 
 private fun calculateTargetHeight(text: String): Dp {
-    val lineHeight = 4.dp
+    val lineHeight = 5.dp
 
     var countOfSpaces = 0
 

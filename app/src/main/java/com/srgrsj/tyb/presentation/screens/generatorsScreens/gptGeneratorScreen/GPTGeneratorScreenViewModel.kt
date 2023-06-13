@@ -106,7 +106,7 @@ class GPTGeneratorScreenViewModel @Inject constructor(
     }
 
     companion object {
-        const val CHAT_GPT_API_KEY = "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"
+        const val CHAT_GPT_API_KEY = ""
     }
 
 

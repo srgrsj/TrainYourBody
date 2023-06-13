@@ -3,12 +3,15 @@ package com.srgrsj.tyb.presentation.screens.generatorsScreens.components
 import android.content.res.Resources
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AlertDialog
@@ -67,19 +70,27 @@ fun AddExerciseAlertDialog(
     var dropdownOpen: Boolean by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
+//    val targetHeight = if (exerciseType == ExerciseType.REPETITION) 500.dp else 800.dp
+//    val height by animateDpAsState(
+//        targetValue = targetHeight,
+//        animationSpec = tween(durationMillis = 500)
+//    )
+
     AlertDialog(
         modifier = Modifier
-            .fillMaxHeight(0.87f),
+            .height(525.dp),
         onDismissRequest = {
             viewModel.hideAddExerciseAlertDialog()
         },
         backgroundColor = MainBackground,
         text = {
             Column(
-                verticalArrangement = Arrangement.spacedBy(2.dp),
+                modifier = Modifier.fillMaxHeight(0.99f),
+//                verticalArrangement = Arrangement.spacedBy(2.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
+                    modifier = Modifier.padding(top = 5.dp),
                     text = stringResource(id = R.string.add_exercise),
                     style = AppTheme.typography.title,
                     color = Color.White
@@ -200,7 +211,7 @@ fun AddExerciseAlertDialog(
                     }
 
 
-                    Spacer(modifier = Modifier.padding(vertical = 2.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     Column(
                         modifier = Modifier
@@ -241,7 +252,7 @@ fun AddExerciseAlertDialog(
 //                    )
                 }
 
-                Spacer(modifier = Modifier.padding(vertical = 2.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
                 OutlinedTextField(
                     value = numberOfCircles,
@@ -262,7 +273,7 @@ fun AddExerciseAlertDialog(
                     }
                 )
 
-                Spacer(modifier = Modifier.padding(vertical = 30.dp))
+//                Spacer(modifier = Modifier.padding(vertical = 30.dp))
             }
         },
         confirmButton = {

@@ -55,7 +55,7 @@ fun SaveWorkoutAlertDialog(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.add_exercise),
+                    text = stringResource(id = R.string.save_workout),
                     style = AppTheme.typography.title,
                     color = Color.White
                 )

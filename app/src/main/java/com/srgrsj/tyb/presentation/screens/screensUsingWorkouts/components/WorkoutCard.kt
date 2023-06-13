@@ -109,7 +109,7 @@ fun WorkoutCard(
                 Spacer(modifier = Modifier.width(10.dp))
 
                 workout.description?.let {
-                    val maxLength = 40
+                    val maxLength = 35
                     val truncatedDescription = if (it.length > maxLength) {
                         it.substring(0, maxLength) + "..."
                     } else {
