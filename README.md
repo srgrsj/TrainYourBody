@@ -35,8 +35,6 @@ To install and run the TYB application locally, follow these steps:
 2. Open the project in Android Studio.
 3. Build and run the project on an Android device or emulator.
 
-Or download apk [here](https://drive.google.com/file/d/106dNkua3oRSJm3mB5Z_VuDpowgpQg-7W/view?usp=drivesdk)
-
 ## Screenshots
 
 <img src="https://github.com/srgrsj/TrainYourBody/assets/51053823/503f7b44-4d26-4011-9ef5-03d0d70e6892" alt="" width="180" height="400">
