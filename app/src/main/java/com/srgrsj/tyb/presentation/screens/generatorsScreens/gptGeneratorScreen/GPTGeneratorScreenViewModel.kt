@@ -28,10 +28,12 @@ import kotlin.time.Duration.Companion.minutes
 
 @HiltViewModel
 class GPTGeneratorScreenViewModel @Inject constructor(
-    workoutUseCase: WorkoutUseCase
+    workoutUseCase: WorkoutUseCase,
 ) : GeneratorsScreenViewModel(workoutUseCase) {
 
-    var gptQuery by mutableStateOf("")
+    private var gptQuery by mutableStateOf("")
+    private var apiKey: String = ""
+
 
     fun generateGptQuery(
         context: Context,
@@ -47,8 +49,8 @@ class GPTGeneratorScreenViewModel @Inject constructor(
         )
     }
 
-    var gptResponse by mutableStateOf("")
-    var gson = Gson()
+    private var gptResponse by mutableStateOf("")
+    private var gson = Gson()
 
 
     private val _generatedWorkout = MutableLiveData<Workout>()
@@ -68,7 +70,7 @@ class GPTGeneratorScreenViewModel @Inject constructor(
         viewModelScope.launch {
             val openAI = OpenAI(
                 OpenAIConfig(
-                    token = CHAT_GPT_API_KEY,
+                    token = apiKey,
                     timeout = Timeout(socket = 5.minutes)
                 )
             )
@@ -105,21 +107,15 @@ class GPTGeneratorScreenViewModel @Inject constructor(
         }
     }
 
-    companion object {
-        const val CHAT_GPT_API_KEY = ""
-    }
-
-
     private val _isWorkoutGenerate = MutableStateFlow(false)
     val isWorkoutGenerate: StateFlow<Boolean> =
         _isWorkoutGenerate.asStateFlow()
 
-    fun setIsWorkoutGenerateTrue() {
+    private fun setIsWorkoutGenerateTrue() {
         _isWorkoutGenerate.value = true
     }
 
     fun setIsWorkoutGenerateFalse() {
         _isWorkoutGenerate.value = false
     }
-
 }

@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DefaultGeneratorScreenViewModel @Inject constructor(
     private val exerciseUseCase: ExerciseUseCase,
-    private val workoutUseCase: WorkoutUseCase
+    workoutUseCase: WorkoutUseCase
 ) : GeneratorsScreenViewModel(workoutUseCase) {
 
     private var _exerciseList = MutableStateFlow(listOf<Exercise>())
@@ -31,12 +31,6 @@ class DefaultGeneratorScreenViewModel @Inject constructor(
 
     fun hideAddExerciseAlertDialog() {
         _showAddExerciseDialog.value = false
-    }
-
-    fun saveExerciseToRealtimeDatabase(exercise: Exercise) {
-        viewModelScope.launch {
-            exerciseUseCase.addExerciseUseCase.invoke(exercise)
-        }
     }
 
     fun saveExerciseToExerciseList(exercise: Exercise) {

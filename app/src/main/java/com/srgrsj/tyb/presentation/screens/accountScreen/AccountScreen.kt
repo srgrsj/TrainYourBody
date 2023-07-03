@@ -6,7 +6,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,13 +23,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.srgrsj.tyb.R
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.data.user.AccountData.ACCOUNT_AVATAR
 import com.srgrsj.tyb.data.user.AccountData.EMAIL
-import com.srgrsj.tyb.presentation.screens.components.Avatar
+import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
+import com.srgrsj.tyb.presentation.theme.Blue
 import com.srgrsj.tyb.presentation.theme.Red
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
 import kotlinx.coroutines.launch
 
 
@@ -35,6 +38,8 @@ fun AccountScreen(
     viewModel: AccountScreenViewModel = hiltViewModel()
 ) {
     val scope = rememberCoroutineScope()
+//    val isApiKeyEmpty by viewModel.isApiKeyEmpty.collectAsState()
+    val isApiKeyEmpty = false
 
     Scaffold(
     ) {
@@ -44,15 +49,14 @@ fun AccountScreen(
                 .background(MainBackground)
         ) {
             Column(
-                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxHeight()
             ) {
-                Spacer(modifier = Modifier.height(20.dp))
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .weight(1f)
                 ) {
                     Column(
                         modifier = Modifier,
@@ -76,11 +80,56 @@ fun AccountScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(20.dp))
+
+                if (isApiKeyEmpty) {
+                    var apiKeyTextField by remember { mutableStateOf("") }
+
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f),
+                        text = stringResource(id = R.string.is_api_key_empty),
+                        style = AppTheme.typography.text16sp,
+                        color = AlphaWhiteColor
+                    )
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f),
+                        value = apiKeyTextField,
+                        onValueChange = {
+                            apiKeyTextField = it
+                        },
+                        label = {
+                            Text(
+                                text = "API key",
+                                style = AppTheme.typography.text16sp,
+                                color = AlphaWhiteColor
+                            )
+                        },
+                        textStyle = AppTheme.typography.textFieldStyle
+                    )
+
+                    Button(
+                        onClick = {
+//                            viewModel.setApiKey(apiKeyTextField)
+                        },
+                        colors = ButtonDefaults.buttonColors(Blue)
+                    ) {
+                        Text(
+                            text = "set api key",
+                            style = AppTheme.typography.text16sp
+                        )
+                    }
+
+                }
+
 
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .weight(0.3f),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Button(

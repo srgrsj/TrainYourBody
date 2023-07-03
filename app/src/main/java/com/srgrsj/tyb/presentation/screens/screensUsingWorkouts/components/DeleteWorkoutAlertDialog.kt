@@ -20,13 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.srgrsj.tyb.R
-import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.ScreensUsingWorkoutViewModel
 import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.Green
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
+
 @Composable
 fun DeleteWorkoutAlertDialog(
     viewModel: ScreensUsingWorkoutViewModel = hiltViewModel()

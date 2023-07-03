@@ -1,18 +1,22 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.selectGeneratorScreen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Switch
-import androidx.compose.material.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,10 +34,9 @@ import com.srgrsj.tyb.presentation.navigation.NavConstants
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.GeneratorScreen
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen.GPTGeneratorScreen
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.WorkoutPreviewScreenType
-import com.srgrsj.tyb.presentation.theme.Blue
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.presentation.theme.Red
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun SelectGeneratorScreen(
     navController: NavController,
@@ -60,38 +63,25 @@ fun SelectGeneratorScreen(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Row(
-                horizontalArrangement = Arrangement.Start,
+            Column(
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
 //                    .clip(RoundedCornerShape(20))
 //                    .background(Blue)
             ) {
+                Spacer(modifier = Modifier.height(10.dp))
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .height(60.dp)
-                        .width(90.dp)
+                        .fillMaxWidth()
                 ) {
-                    Switch(
-                        modifier = Modifier
-                            .size(50.dp),
-                        checked = switchStatus,
-                        onCheckedChange = {
-                            switchStatus = !switchStatus
-                        },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = Blue,
-                            checkedTrackColor = Blue,
-                            uncheckedThumbColor = Red,
-                            uncheckedTrackColor = Red,
-                        )
-                    )
-
+                    Spacer(modifier = Modifier.width(7.dp))
+                    
                     Image(
                         modifier = Modifier
                             .clip(RoundedCornerShape(20))
-                            .size(40.dp),
+                            .size(40.dp)
+                            .clickable { switchStatus = !switchStatus },
                         painter = painterResource(
                             id =
                             if (switchStatus) R.drawable.bluegptlogo else R.drawable.graygptlogo

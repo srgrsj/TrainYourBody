@@ -32,7 +32,7 @@ class SignInScreenViewModel @Inject constructor(
                 }
 
                 is Resource.Error -> {
-                    _signInState.send(SignInState(isError = result.message))
+                    _signInState.send(SignInState(isError = result.message.toString()))
                 }
             }
 

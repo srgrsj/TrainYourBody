@@ -1,6 +1,8 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,8 +17,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.srgrsj.tyb.R
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.components.AddExerciseAlertDialog
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.components.ExercisePreview
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.components.SaveWorkoutAlertDialog
@@ -24,6 +28,7 @@ import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun GeneratorScreen(
@@ -92,7 +97,7 @@ fun GeneratorScreen(
                             .fillMaxWidth()
                     ) {
                         Text(
-                            text = "Default",
+                            text = stringResource(id = R.string.default_generator),
                             style = AppTheme.typography.title
                         )
                     }
@@ -108,6 +113,7 @@ fun GeneratorScreen(
                             tint = Color.White,
                             modifier = Modifier
                                 .height(40.dp)
+                                .padding(end = 5.dp)
                                 .width(40.dp)
                                 .clickable {
                                     viewModel.showSaveWorkoutAlertDialog()

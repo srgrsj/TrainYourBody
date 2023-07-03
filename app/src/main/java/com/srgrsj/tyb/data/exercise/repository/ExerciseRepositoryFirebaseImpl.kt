@@ -14,7 +14,7 @@ import javax.inject.Inject
 @Module
 @InstallIn(SingletonComponent::class)
 class ExerciseRepositoryFirebaseImpl
-@Inject constructor(private val databaseReference: DatabaseReference) : ExerciseRepository {
+@Inject constructor(databaseReference: DatabaseReference) : ExerciseRepository {
     private val exerciseDatabaseReference =
         databaseReference.child("${AccountData.ID}/exercise")
 

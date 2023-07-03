@@ -161,5 +161,10 @@
     <string name="account">Account</string>
     <string name="workouts">Workouts</string>
     <string name="save_workout">Save Workout</string>
+    <string name="is_api_key_empty">If you see this, then to use the GPT generator, you need to enter your Openal API key</string>
+    <string name="is_fav_list_empty">Add your workout to favorite</string>
+    <string name="repetitions_dropdown">repetitions</string>
+    <string name="time_dropdown">time</string>
+    <string name="default_generator">default</string>
 
 </resources>

@@ -28,12 +28,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.srgrsj.tyb.R
+import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
-import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -84,8 +82,7 @@ fun SignInScreen(
                     .fillMaxSize()
             ) {
                 Image(
-                    modifier = Modifier.
-                        padding(bottom = 50.dp),
+                    modifier = Modifier.padding(bottom = 50.dp),
                     painter = painterResource(id = R.drawable.train_your_body),
                     contentDescription = null
                 )
@@ -177,7 +174,7 @@ fun SignInScreen(
                 LaunchedEffect(key1 = state.value?.isError) {
                     scope.launch {
                         if (state.value?.isError?.isNotEmpty() == true) {
-                            val error = state.value?.isSuccess
+                            val error = state.value?.isError
 
                             Toast.makeText(context, error, Toast.LENGTH_LONG).show()
 

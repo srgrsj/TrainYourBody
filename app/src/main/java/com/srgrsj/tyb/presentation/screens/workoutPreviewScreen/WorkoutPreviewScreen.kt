@@ -7,26 +7,20 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.components.ExercisePreview
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.components.SaveSection
 import com.srgrsj.tyb.presentation.screens.workoutPreviewScreen.components.StartSection
-import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -34,7 +28,7 @@ fun WorkoutPreviewScreen(
 //    type: WorkoutPreviewScreenType,
     navController: NavController,
     navigateToWorkoutRealizationScreen: ((Workout) -> Unit)? = null,
-    viewModel: WorkoutPreviewScreenViewModel = hiltViewModel()
+
 ) {
 
     val workout by remember {

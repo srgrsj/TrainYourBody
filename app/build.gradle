@@ -6,6 +6,7 @@ plugins {
 
     id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -54,6 +55,10 @@ android {
 }
 
 dependencies {
+    //Security
+    implementation "androidx.security:security-crypto:1.0.0"
+
+
     //Time picker
     implementation 'com.github.commandiron:WheelPickerCompose:1.1.11'
 
@@ -79,6 +84,8 @@ dependencies {
 
     //Hilt
     implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
     kapt "com.google.dagger:hilt-compiler:2.44"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 

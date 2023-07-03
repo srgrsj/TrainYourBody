@@ -18,7 +18,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -83,15 +82,7 @@ fun AnimatedTextBlock(
 
 
 private fun calculateTargetHeight(text: String): Dp {
-    val lineHeight = 5.dp
+    val lineHeight = 1.dp
 
-    var countOfSpaces = 0
-
-    for (i in text) {
-        if (i == ' ') {
-            countOfSpaces++
-        }
-    }
-
-    return lineHeight * countOfSpaces
+    return lineHeight * text.length
 }

@@ -1,8 +1,10 @@
 package com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen
 
+import android.media.MediaPlayer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.srgrsj.tyb.R
 import com.srgrsj.tyb.domain.exercise.model.Exercise
 import com.srgrsj.tyb.domain.workout.usecases.WorkoutUseCase
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.ScreensUsingWorkoutViewModel
@@ -13,6 +15,7 @@ import javax.inject.Inject
 class WorkoutRealizationScreenViewModel @Inject constructor(
     useCase: WorkoutUseCase
 ) : ScreensUsingWorkoutViewModel(useCase) {
+
 
     var isProgressStop by mutableStateOf(true)
     var exerciseList: List<Exercise> by mutableStateOf(emptyList())

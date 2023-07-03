@@ -21,7 +21,7 @@ import javax.inject.Inject
 class UserRepositoryFirebaseImpl
 @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val databaseReference: DatabaseReference
+    databaseReference: DatabaseReference
 
 ) : UserRepository{
     private val userDatabaseReference =

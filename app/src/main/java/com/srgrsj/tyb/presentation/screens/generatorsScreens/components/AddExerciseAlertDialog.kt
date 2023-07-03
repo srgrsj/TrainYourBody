@@ -3,8 +3,6 @@ package com.srgrsj.tyb.presentation.screens.generatorsScreens.components
 import android.content.res.Resources
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,12 +11,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -33,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -47,9 +45,12 @@ import com.srgrsj.tyb.presentation.components.TimePicker
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.DefaultGeneratorScreenViewModel
 import com.srgrsj.tyb.presentation.theme.AlphaWhiteColor
 import com.srgrsj.tyb.presentation.theme.AppTheme
+import com.srgrsj.tyb.presentation.theme.DarkGray
+import com.srgrsj.tyb.presentation.theme.Gray
 import com.srgrsj.tyb.presentation.theme.Green
 import com.srgrsj.tyb.presentation.theme.MainBackground
 import com.srgrsj.tyb.presentation.theme.Red
+import com.srgrsj.tyb.presentation.theme.WheelPicker
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
@@ -62,19 +63,14 @@ fun AddExerciseAlertDialog(
     var numberOfRepetitionsIsError by remember { mutableStateOf(false) }
     var numberOfCircles: String by remember { mutableStateOf("") }
     var numberOfCirclesIsError by remember { mutableStateOf(false) }
-    var durationOfOneCircle = remember { mutableStateOf(0L) }
+    val durationOfOneCircle = remember { mutableStateOf(0L) }
     var durationOfOneCircleIsError by remember { mutableStateOf(false) }
-    var durationOfRest = remember { mutableStateOf(0L) }
+    val durationOfRest = remember { mutableStateOf(0L) }
     var durationOfRestIsError by remember { mutableStateOf(false) }
     var exerciseType: ExerciseType by remember { mutableStateOf(ExerciseType.REPETITION) }
     var dropdownOpen: Boolean by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
-//    val targetHeight = if (exerciseType == ExerciseType.REPETITION) 500.dp else 800.dp
-//    val height by animateDpAsState(
-//        targetValue = targetHeight,
-//        animationSpec = tween(durationMillis = 500)
-//    )
 
     AlertDialog(
         modifier = Modifier
@@ -118,35 +114,61 @@ fun AddExerciseAlertDialog(
 
                 Spacer(modifier = Modifier.padding(vertical = 2.dp))
 
-                DropdownMenu(
-                    expanded = dropdownOpen,
-                    onDismissRequest = { dropdownOpen = false }
-                ) {
-                    ExerciseType.values().forEach { type ->
-                        DropdownMenuItem(onClick = {
-                            exerciseType = type
-                            dropdownOpen = false
-                        }) {
-                            Text(text = type.name)
-                        }
-                    }
-                }
-
                 Button(
-                    onClick = { dropdownOpen = !dropdownOpen },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = MainBackground
-                    )
+                    modifier = Modifier
+                        .width(150.dp),
+                    colors = ButtonDefaults.buttonColors(Gray),
+                    onClick = {
+                        exerciseType =
+                            if (exerciseType == ExerciseType.REPETITION)
+                                ExerciseType.TIME
+                            else
+                                ExerciseType.REPETITION
+                    }
                 ) {
                     Text(
-                        modifier = Modifier
-                            .align(Alignment.Bottom)
-                            .padding(top = 4.dp),
-                        text = exerciseType.name,
-                        style = AppTheme.typography.text16sp,
+                        text = if (exerciseType == ExerciseType.REPETITION)
+                            stringResource(id = R.string.repetitions_dropdown)
+                        else
+                            stringResource(id = R.string.time_dropdown),
                         color = AlphaWhiteColor
                     )
                 }
+
+//                DropdownMenu(
+//                    expanded = dropdownOpen,
+//                    onDismissRequest = { dropdownOpen = false }
+//                ) {
+//                    ExerciseType.values().forEach { type ->
+//                        DropdownMenuItem(onClick = {
+//                            exerciseType = type
+//                            dropdownOpen = false
+//                        }) {
+//                            Text(
+//                                text = if (type == ExerciseType.REPETITION)
+//                                    stringResource(id = R.string.repetitions_dropdown)
+//                                else
+//                                    stringResource(id = R.string.time_dropdown)
+//                            )
+//                        }
+//                    }
+//                }
+
+//                Button(
+//                    onClick = { dropdownOpen = !dropdownOpen },
+//                    colors = ButtonDefaults.buttonColors(
+//                        backgroundColor = MainBackground
+//                    )
+//                ) {
+//                    Text(
+//                        modifier = Modifier
+//                            .align(Alignment.Bottom)
+//                            .padding(top = 4.dp),
+//                        text = exerciseType.name,
+//                        style = AppTheme.typography.text16sp,
+//                        color = AlphaWhiteColor
+//                    )
+//                }
 
                 Spacer(modifier = Modifier.padding(vertical = 2.dp))
 

@@ -28,7 +28,9 @@ import com.srgrsj.tyb.domain.exercise.model.Exercise
 import com.srgrsj.tyb.domain.exercise.model.ExerciseType
 import com.srgrsj.tyb.presentation.screens.generatorsScreens.defaultGeneratorScreen.DefaultGeneratorScreenViewModel
 import com.srgrsj.tyb.presentation.theme.AppTheme
+import com.srgrsj.tyb.presentation.theme.Orange
 import com.srgrsj.tyb.presentation.theme.Red
+import com.srgrsj.tyb.presentation.theme.RedOrangeGradient
 import com.srgrsj.tyb.util.DateTimeUtils
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
@@ -39,8 +41,6 @@ fun ExercisePreview(
     exercise: Exercise,
     viewModel: DefaultGeneratorScreenViewModel = hiltViewModel()
 ) {
-    val swipeThreshold = 60.dp
-
     if (!deletable!!) {
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -53,7 +53,7 @@ fun ExercisePreview(
                     .clip(RoundedCornerShape(10))
                     .border(2.dp, Color.Black, RoundedCornerShape(10))
                     .fillMaxWidth(0.95f)
-                    .background(color = Red)
+                    .background(Orange)
                     .padding(vertical = 8.dp, horizontal = 16.dp)
             ) {
                 Column(modifier = Modifier.weight(1f)) {
@@ -87,7 +87,7 @@ fun ExercisePreview(
                         }
 
                         else -> {
-                            exercise.durationOfOneCircle?.let { durationOfOneCircle ->
+                            exercise.durationOfOneCircle?.let {
                                 Text(
                                     text = "" +
                                             "${stringResource(id = R.string.duration_of_one_circle)} ${
@@ -149,7 +149,7 @@ fun ExercisePreview(
                         .clip(RoundedCornerShape(10))
                         .border(2.dp, Color.Black, RoundedCornerShape(10))
                         .fillMaxWidth()
-                        .background(color = Red)
+                        .background(Orange)
                         .padding(vertical = 8.dp, horizontal = 16.dp)
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
@@ -183,7 +183,7 @@ fun ExercisePreview(
                             }
 
                             else -> {
-                                exercise.durationOfOneCircle?.let { durationOfOneCircle ->
+                                exercise.durationOfOneCircle?.let {
                                     Text(
                                         text = "" +
                                                 "${stringResource(id = R.string.duration_of_one_circle)} ${

@@ -1,7 +1,6 @@
 package com.srgrsj.tyb.domain.user.usecases
 
 import com.google.firebase.auth.AuthResult
-import com.srgrsj.tyb.domain.user.model.User
 import com.srgrsj.tyb.domain.user.repository.UserRepository
 import com.srgrsj.tyb.util.Resource
 import kotlinx.coroutines.flow.Flow

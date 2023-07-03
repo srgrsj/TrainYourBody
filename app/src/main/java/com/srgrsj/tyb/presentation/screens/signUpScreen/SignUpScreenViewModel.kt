@@ -2,13 +2,12 @@ package com.srgrsj.tyb.presentation.screens.signUpScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.srgrsj.tyb.domain.user.model.User
-import com.srgrsj.tyb.domain.user.usecases.UserUseCase
-import com.srgrsj.tyb.data.user.AccountData
-import com.srgrsj.tyb.util.Resource
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.srgrsj.tyb.data.user.repository.UserRepositoryFirebaseImpl
+import com.srgrsj.tyb.data.user.AccountData
+import com.srgrsj.tyb.domain.user.model.User
+import com.srgrsj.tyb.domain.user.usecases.UserUseCase
+import com.srgrsj.tyb.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow

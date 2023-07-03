@@ -1,53 +1,58 @@
 package com.srgrsj.tyb.presentation.theme
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+
 
 //Colors
-val Red = Color(0xFFf00038)
+
+val RedOrangeGradient = Brush.horizontalGradient(listOf(Color(0xFFFF222A), Color(0xFFFF7B55)))
+val BlueBlueGradient = Brush.horizontalGradient(listOf(Color(0xFF0066FC), Color(0xFF00BC93)))
+val OrangeYellowGradient = Brush.horizontalGradient(listOf(Color(0xFFFFBE49), Color(0xFFF9F871)))
 val Green = Color(0xFF098F04)
+val Orange = Color(0xFFFF7B55)
 val DarkGray = Color(0xFF5E5E5E)
 val AlphaWhiteColor = Color(0xB2FFFFFF)
+val Beige = Color(0xFFD57F6D)
 //val Blue = Color(0xFF03A9F4)
 val Blue = Color(0xFF4C34D5)
-val LightGreen = Color(0xFF8BC34A)
+//val LightGreen = Color(0xFF8BC34A)
 val Gray = Color(0xFF1F1F1F)
+val Red = Color(0xFFFF222A)
+
 val WheelPicker = Color(0xFF1c1a1c)
 
 
 //val Red = Color(0xFFd07387)
 //val Green = Color(0xFF098F04)
 //val DarkGray = Color(0xFF5E5E5E)
-//val AlphaWhiteColor = Color(0xB2FFFFFF)
+//val AlphaWhiteColor = Color(0xB2FFF-FFF)
 ////val Blue = Color(0xFF03A9F4)
 //val Blue = Color(0xFF354c78)
 //val LightGreen = Color(0xFF8f9fae)
 //val Gray = Color(0xFF1F1F1F)
 
 
-val CreateWorkoutButtonGradient = Brush.horizontalGradient(listOf(Red, Blue))
+//val CreateWorkoutButtonGradient = Brush.horizontalGradient(listOf(Red, Blue))
 
-val TopBarText = Color(0xE6FFFFFF)
+//val TopBarText = Color(0xE6FFF-FFF)
 val MainBackground = Gray
-val CardsBackground = Red
-val TopBarColor = Color(0xFF292929)
 
-val GptGeneratedWorkoutCardsColor= Blue
+//val TopBarColor = Color(0xFF292929)
 
-val AuthorWorkoutsCardColor = LightGreen
+val UserCardsBackground = RedOrangeGradient
+val GptCardsBackground = BlueBlueGradient
+val AuthorCardBackground = OrangeYellowGradient
 
 
 //NavBarColors
 val NavBarColor = Color(0xFF1F1F1F)
 val SelectedNavBarItem = Red
 val UnselectedNavBarItem = Color(0xFFFFFFFF)
-
-
-
 
 
 class AppColors(
@@ -110,13 +115,6 @@ private val colorLightTextPrimary = Color(0xff1C6758)
 private val colorLightTextSecondary = Color(0xFF000000)
 private val colorLightBackground = Color(0xffAEE2FF)
 private val colorLightError = Color(0xFFD62222)
-//Dark
-private val colorDarkPrimary = Color(0xff90ee90)
-private val colorDarkSecondary = Color(0xff876445)
-private val colorDarkTextPrimary = Color(0xffFFF9B2)
-private val colorDarkTextSecondary = Color(0xFFffffff)
-private val colorDarkBackground = Color(0xff0B2447)
-private val colorDarkError = Color(0xFFD62222)
 
 fun lightColors(
     primary: Color = colorLightPrimary,
@@ -135,23 +133,6 @@ fun lightColors(
     isLight = true
 )
 
-
-fun darkColors(
-    primary: Color = colorDarkPrimary,
-    secondary: Color = colorDarkSecondary,
-    textPrimary: Color = colorDarkTextPrimary,
-    textSecondary: Color = colorDarkTextSecondary,
-    background: Color = colorDarkBackground,
-    error: Color = colorDarkError
-): AppColors = AppColors(
-    primary = primary,
-    secondary = secondary,
-    textPrimary = textPrimary,
-    textSecondary = textSecondary,
-    background = background,
-    error = error,
-    isLight = false
-)
 
 val LocalColors = staticCompositionLocalOf { lightColors() }
 

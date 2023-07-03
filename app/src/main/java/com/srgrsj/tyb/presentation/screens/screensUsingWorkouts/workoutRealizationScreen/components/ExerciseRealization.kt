@@ -34,6 +34,7 @@ import com.srgrsj.tyb.domain.exercise.model.ExerciseType
 import com.srgrsj.tyb.presentation.components.AnimatedTextBlock
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen.WorkoutRealizationScreenViewModel
 import com.srgrsj.tyb.presentation.theme.AppTheme
+import com.srgrsj.tyb.presentation.theme.Orange
 import com.srgrsj.tyb.presentation.theme.Red
 import io.sanghun.compose.video.RepeatMode
 import io.sanghun.compose.video.VideoPlayer
@@ -55,11 +56,11 @@ fun ExerciseRealization(
         Column(
             modifier = Modifier
                 .padding(top = 15.dp)
-                .clip(RoundedCornerShape(20))
+                .clip(RoundedCornerShape(10))
                 .fillMaxWidth(0.95f)
 //                .fillMaxHeight(0.5f)
-                .background(Red)
-                .border(3.dp, Color.Black, RoundedCornerShape(20))
+                .background(Orange)
+                .border(3.dp, Color.Black, RoundedCornerShape(10))
 
         ) {
             when (exercise.exerciseType) {
@@ -92,7 +93,7 @@ fun ExerciseRealization(
                                 style = AppTheme.typography.text16sp
                             )
                             Text(
-                                text = "${viewModel.currentCircle} / ${exercise.numberOfCircles ?: 1}",
+                                text = "${viewModel.currentRestCircle} / ${exercise.numberOfCircles ?: 1}",
                                 style = AppTheme.typography.text16sp
                             )
 
@@ -151,7 +152,7 @@ fun ExerciseRealization(
                         Text(
                             text = exercise.title.toString(),
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(vertical = 5.dp,horizontal = 16.dp),
+                            modifier = Modifier.padding(vertical = 5.dp, horizontal = 16.dp),
                             style = AppTheme.typography.subtitle,
                             color = Color.Black
                         )
@@ -235,7 +236,7 @@ fun ExerciseRealization(
             ) {
                 Button(
                     onClick = { viewModel.goToNextExercise() },
-                    colors = ButtonDefaults.buttonColors(Red),
+                    colors = ButtonDefaults.buttonColors(Orange),
                     modifier = Modifier
                         .height(50.dp)
                         .clip(RoundedCornerShape(20)),
@@ -254,7 +255,7 @@ fun ExerciseRealization(
             ) {
                 Button(
                     onClick = { viewModel.goToNextExercise() },
-                    colors = ButtonDefaults.buttonColors(Red),
+                    colors = ButtonDefaults.buttonColors(Orange),
                     modifier = Modifier
                         .height(50.dp)
                         .clip(RoundedCornerShape(20)),
@@ -268,7 +269,7 @@ fun ExerciseRealization(
 
                 Button(
                     onClick = { viewModel.startStopProgress() },
-                    colors = ButtonDefaults.buttonColors(Red),
+                    colors = ButtonDefaults.buttonColors(Orange),
                     modifier = Modifier
                         .height(50.dp)
                         .clip(RoundedCornerShape(20))

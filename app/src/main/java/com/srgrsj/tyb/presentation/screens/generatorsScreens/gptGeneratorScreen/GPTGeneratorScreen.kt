@@ -1,7 +1,6 @@
 package com.srgrsj.tyb.presentation.screens.generatorsScreens.gptGeneratorScreen
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -13,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -32,6 +32,7 @@ import com.srgrsj.tyb.presentation.theme.MainBackground
 fun GPTGeneratorScreen(
     navigateToWorkoutPreviewScreen: ((Workout, WorkoutPreviewScreenType) -> Unit)? = null,
     viewModel: GPTGeneratorScreenViewModel = hiltViewModel(),
+
 
     ) {
 
@@ -55,6 +56,9 @@ fun GPTGeneratorScreen(
     var isInProgress by remember {
         mutableStateOf(false)
     }
+    
+//    val isApiKeyEmpty by viewModel.isApiKeyEmpty.collectAsState()
+    val isApiKeyEmpty = false
 
     var isTextFieldsInError by remember { mutableStateOf(false) }
 
@@ -202,7 +206,8 @@ fun GPTGeneratorScreen(
                     ) {
                         Text(
                             text = stringResource(id = R.string.generate_workout),
-                            style = AppTheme.typography.text16sp
+                            style = AppTheme.typography.text16sp,
+                            color = Color.White
                         )
                     }
 

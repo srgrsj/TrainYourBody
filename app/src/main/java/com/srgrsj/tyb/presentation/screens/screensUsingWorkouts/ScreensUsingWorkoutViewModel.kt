@@ -1,8 +1,6 @@
 package com.srgrsj.tyb.presentation.screens.screensUsingWorkouts
 
-import android.annotation.SuppressLint
 import android.content.Context
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.srgrsj.tyb.domain.workout.model.Workout

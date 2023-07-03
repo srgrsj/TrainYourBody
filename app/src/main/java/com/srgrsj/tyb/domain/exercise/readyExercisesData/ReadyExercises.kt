@@ -1,11 +1,8 @@
 package com.srgrsj.tyb.domain.exercise.readyExercisesData
 
-import android.app.Application
 import android.content.Context
 import com.srgrsj.tyb.R
 import com.srgrsj.tyb.domain.exercise.model.Exercise
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlin.coroutines.coroutineContext
 
 enum class ReadyExercises(val exercise: Exercise) {
     X_UPS(

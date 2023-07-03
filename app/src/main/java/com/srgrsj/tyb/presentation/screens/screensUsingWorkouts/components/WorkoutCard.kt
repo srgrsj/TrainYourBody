@@ -1,6 +1,7 @@
 package com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.components
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -39,9 +40,9 @@ import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.domain.workout.model.WorkoutGenerationType
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.ScreensUsingWorkoutViewModel
 import com.srgrsj.tyb.presentation.theme.AppTheme
-import com.srgrsj.tyb.presentation.theme.AuthorWorkoutsCardColor
-import com.srgrsj.tyb.presentation.theme.CardsBackground
-import com.srgrsj.tyb.presentation.theme.GptGeneratedWorkoutCardsColor
+import com.srgrsj.tyb.presentation.theme.AuthorCardBackground
+import com.srgrsj.tyb.presentation.theme.GptCardsBackground
+import com.srgrsj.tyb.presentation.theme.UserCardsBackground
 
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -59,33 +60,35 @@ fun WorkoutCard(
     }
 
     var cardBackgroundColor by remember {
-        mutableStateOf(CardsBackground)
+        mutableStateOf(UserCardsBackground)
     }
 
     cardBackgroundColor = when (workout.workoutGenerationType) {
         WorkoutGenerationType.GPT -> {
-            GptGeneratedWorkoutCardsColor
+            GptCardsBackground
         }
 
         WorkoutGenerationType.USER -> {
-            CardsBackground
+            UserCardsBackground
         }
 
         else -> {
-            AuthorWorkoutsCardColor
+            AuthorCardBackground
         }
     }
 
     Card(
         modifier = Modifier
+            .clip(RoundedCornerShape(10))
+            .border(3.dp, Color.Black, RoundedCornerShape(10))
+            .background(cardBackgroundColor)
             .width(250.dp)
             .height(150.dp)
-            .clip(RoundedCornerShape(10))
-            .border(2.dp, Color.Black, RoundedCornerShape(10))
             .clickable {
                 navigateToWorkoutPreviewScreen?.invoke(workout)
-            },
-        backgroundColor = cardBackgroundColor,
+            }
+            ,
+        backgroundColor = Color.Transparent
     ) {
 
         Column(

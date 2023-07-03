@@ -6,22 +6,17 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -33,16 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.srgrsj.tyb.R
-import com.srgrsj.tyb.domain.exercise.model.ExerciseType
 import com.srgrsj.tyb.domain.workout.model.Workout
 import com.srgrsj.tyb.presentation.navigation.NavConstants
 import com.srgrsj.tyb.presentation.screens.screensUsingWorkouts.workoutRealizationScreen.components.ExerciseRealization
 import com.srgrsj.tyb.presentation.theme.AppTheme
 import com.srgrsj.tyb.presentation.theme.MainBackground
-import com.srgrsj.tyb.presentation.theme.Red
-import com.srgrsj.tyb.presentation.theme.TopBarColor
-import com.srgrsj.tyb.presentation.theme.TopBarText
-import kotlinx.coroutines.delay
+import com.srgrsj.tyb.presentation.theme.Orange
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -90,6 +81,7 @@ fun WorkoutRealizationScreen(
                                 exercise = it,
                                 viewModel = viewModel
                             )
+
                         }
                     } else {
                         Column(
@@ -101,11 +93,11 @@ fun WorkoutRealizationScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center,
                                 modifier = Modifier
-                                    .clip(RoundedCornerShape(20))
+                                    .clip(RoundedCornerShape(10))
                                     .fillMaxWidth(0.95f)
                                     .fillMaxHeight(0.4f)
-                                    .background(Red)
-                                    .border(3.dp, Color.Black, RoundedCornerShape(20))
+                                    .background(Orange)
+                                    .border(3.dp, Color.Black, RoundedCornerShape(10))
 
                             ) {
                                 Text(
@@ -121,7 +113,7 @@ fun WorkoutRealizationScreen(
                                 onClick = {
                                     navigationController.navigate(NavConstants.WORKOUTS)
                                 },
-                                colors = ButtonDefaults.buttonColors(Red),
+                                colors = ButtonDefaults.buttonColors(Orange),
                                 modifier = Modifier
                                     .height(50.dp)
                                     .clip(RoundedCornerShape(20))

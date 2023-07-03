@@ -4,8 +4,6 @@ import com.srgrsj.tyb.domain.workout.model.Workout
 
 interface WorkoutRepository {
 
-    suspend fun getWorkouts(): List<Workout>?
-
     fun getWorkoutsLegacy(onComplete: ((List<Workout>?) -> Unit)? = null)
 
 //    suspend fun getFavWorkouts(): List<Workout>?

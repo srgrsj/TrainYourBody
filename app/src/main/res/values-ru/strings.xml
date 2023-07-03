@@ -164,5 +164,11 @@
     <string name="account">Аккаунт</string>
     <string name="workouts">Тренировки</string>
     <string name="save_workout">Сохранить Тренировку</string>
+    <string name="is_api_key_empty">Если вы видите это, то для использования GPT генератора, вам необходимо ввести ваш OpenAi API key</string>
+    <string name="is_fav_list_empty">Добавьте свою тренировку в избранное</string>
+    <string name="repetitions_dropdown">повторения</string>
+    <string name="time_dropdown">время</string>
+    <string name="default_generator">стандартный</string>
+
 
 </resources>
